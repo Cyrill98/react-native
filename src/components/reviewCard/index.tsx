@@ -13,19 +13,19 @@ interface ItemOverviewProps {
         image: string,
         itemCondition: string,
         itemQuantity: string,
+        donorJoinedDate: string,
         donor: string,
-        favouriteCount: number,
 
     }
 }
 
 type homeScreenProp = StackNavigationProp<RootStackParamList, 'HomeScreen'>;
 
-const MainCard = (props: ItemOverviewProps) => {
+const ReviewCard = (props: ItemOverviewProps) => {
     const navigation = useNavigation<homeScreenProp>();
     const item = props.item;
     const onPress = () => {
-        navigation.navigate('ItemDetailsScreen', {id: item.id});
+        navigation.navigate('ReviewScreen', {id: item.id});
     };
     return (
         <Pressable onPress={onPress} style={styles.root}>
@@ -44,4 +44,4 @@ const MainCard = (props: ItemOverviewProps) => {
     )
 }
 
-export default MainCard
+export default ReviewCard

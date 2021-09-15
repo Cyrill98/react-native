@@ -26,7 +26,7 @@ interface ProfileDetailProp {
 const ProfileCard = (props: ProfileDetailProp) => {
     const profile = props.profile
     return (
-        <ScrollView>
+        <View>
             <View style={styles.container}>
                 <Text style={[textStyles.h3, {color:defaultStyle.color.altText, paddingTop: 24, paddingLeft: 24}]}>Profile</Text>
                 <View style={styles.profileContainer}>
@@ -60,7 +60,7 @@ const ProfileCard = (props: ProfileDetailProp) => {
                     </View>
                 </View>
             </View>
-        </ScrollView>
+        </View>
         
     )
 }

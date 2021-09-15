@@ -5,7 +5,7 @@ import defaultStyle from '../../globalstyles/defaultStyles'
 import textStyles from '../../globalstyles/textSyles'
 import styles from './styles.ios'
 import MainCard from '../../components/mainCard'
-import items from '../../data/products'
+import items from '../../data/productDetails'
 
 
 

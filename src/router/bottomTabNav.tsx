@@ -7,6 +7,7 @@ import ProfileScreen from '../screens/profileScreen';
 import defaultStyle from '../globalstyles/defaultStyles';
 import HomeStack from './homeStack';
 import UploadScreen from '../screens/uploadScreen';
+import ProfileStack from './profileStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -42,7 +43,7 @@ const BottomTabNav = () => {
                         ),
                     }}/>
                 <Tab.Screen 
-                    component={ProfileScreen} 
+                    component={ProfileStack} 
                     name='Profile' 
                     options={{
                         tabBarIcon: (({color}) => 

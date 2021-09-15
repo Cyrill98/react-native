@@ -8,7 +8,7 @@ const styles = StyleSheet.create ({
   },
   itemContainer: {
     padding: 8,
-    paddingTop: 24,
+    paddingTop: 8,
     height: 420,
     backgroundColor: defaultStyles.color.backgroundLight,
     borderTopStartRadius: 20,

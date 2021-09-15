@@ -51,7 +51,7 @@ const styles = StyleSheet.create(
             alignItems: "center",
             marginVertical: 5,
         },
-        donorReviewImage: {
+        takerImage: {
             height: 24,
             width: 24,
             borderRadius: 24,

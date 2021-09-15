@@ -25,11 +25,9 @@ interface ItemDetailProp {
         images: string[],
         itemStatus?: string,
         location: string,
-        avgRating: number,
-        ratings: number,
-        saveCount: number,
+        favouriteCount: number,
         requestCount: number,
-        uploadTime: string,
+        timeStamp: string,
         itemCondition: string,
         itemQuantity: string,
         pickupLocation: string,
@@ -38,9 +36,12 @@ interface ItemDetailProp {
         donor: string,
         donorJoinedDate: string,
         donorImage: string,
-        donorReview: string,
-        reviewer: string,
-        reviewerJoinedDate: string,
+        donorAvgRating: number,
+        donorRatingCount: number,
+        taker: string,
+        takerJoinedDate: string,
+        takerImage: string,
+        takerReviewToDonor: string,
     }
 }
 
@@ -82,7 +83,7 @@ const ItemDetails = (props: ItemDetailProp) => {
                     {/* Save Count */}
                     <View style={styles.detail}>
                         <AntDesign name='hearto' size={24} />
-                        <Text style={[textStyles.body, {padding: 8}]}>{itemDetail.saveCount} saves</Text>   
+                        <Text style={[textStyles.body, {padding: 8}]}>{itemDetail.favouriteCount} saves</Text>   
                     </View>
                     
                     {/* Request Count */}
@@ -94,7 +95,7 @@ const ItemDetails = (props: ItemDetailProp) => {
                     {/* Upload Time */}
                     <View style={styles.detail}>
                         <MaterialIcons name='timer' size={24} />
-                        <Text style={[textStyles.body, {padding: 8}]}>{itemDetail.uploadTime}</Text>
+                        <Text style={[textStyles.body, {padding: 8}]}>{itemDetail.timeStamp}</Text>
                     </View>
                     
                     {/* Condition */}
@@ -151,7 +152,7 @@ const ItemDetails = (props: ItemDetailProp) => {
                             <Text style={textStyles.extrasmall}>Joined {itemDetail.donorJoinedDate}</Text>
                             <Text style={textStyles.extrasmall}>Verified</Text> 
                         </View> 
-                        <Image source = {{uri : '/Users/ferdmas/Dev/work/SadaqamediaRN/src/data/image/profile/profile-1.png' }} style={styles.donorImage}/>  
+                        <Image source = {{uri : itemDetail.donorImage }} style={styles.donorImage}/>  
                     </View>
                     
                     {/* Hairline */}
@@ -164,23 +165,23 @@ const ItemDetails = (props: ItemDetailProp) => {
                         <MaterialIcons
                             key={`${itemDetail.id}-${i}`}
                             style={styles.star}
-                            name={i < Math.floor(itemDetail.avgRating) ? 'star' : 'star-border'}
+                            name={i < Math.floor(itemDetail.donorAvgRating) ? 'star' : 'star-border'}
                             size={24}
-                            color={i < Math.floor(itemDetail.avgRating) ? defaultStyle.color.stars : defaultStyle.color.backgroundOverlay} />
+                            color={i < Math.floor(itemDetail.donorAvgRating) ? defaultStyle.color.stars : defaultStyle.color.backgroundOverlay} />
                         )}
-                        <Text>({itemDetail.ratings})</Text>
+                        <Text>({itemDetail.donorRatingCount})</Text>
                         </View>
                         <Text style={textStyles.small}>Review</Text>
                         <View style={{flexDirection: 'row', marginTop:8, marginBottom:8}}>
-                            <Image source = {{uri : '/Users/ferdmas/Dev/work/SadaqamediaRN/src/data/image/profile/profile-9.jpg' }} style={styles.donorReviewImage}/> 
+                            <Image source = {{uri : itemDetail.takerImage }} style={styles.takerImage}/> 
                             <View>
-                                <Text style={textStyles.extrasmall}>{itemDetail.reviewer}</Text>
-                                <Text style={textStyles.extrasmall}>Joined {itemDetail.reviewerJoinedDate}</Text> 
+                                <Text style={textStyles.extrasmall}>{itemDetail.taker}</Text>
+                                <Text style={textStyles.extrasmall}>Joined {itemDetail.takerJoinedDate}</Text> 
                             </View>
                             
                         </View>
                         
-                        <Text style={[textStyles.body, {marginTop:8, marginBottom:8}]}>{itemDetail.donorReview}</Text> 
+                        <Text style={[textStyles.body, {marginTop:8, marginBottom:8}]}>{itemDetail.takerReviewToDonor}</Text> 
                     </View>
                     
                     <CommonButton buttonText={'See Reviews'} primaryText primaryBackground/>
