@@ -2,7 +2,7 @@ export default [
   {
     id: '1',
     title: "Ikea Chair Jotunhei",
-    image: '/Users/ferdmas/Dev/work/SadaqamediaRN/src/data/image/ikeachair/ikeachair-1.jpeg',
+    image: '/Users/ferdmas/Dev/work/SMPortalRN/src/data/image/ikeachair/ikeachair-1.jpeg',
     itemCondition: "Used",
     itemQuantity: "Single",
     donor: "@fiziying",
@@ -11,7 +11,7 @@ export default [
   {
     id: '2',
     title: "Traditional Retro Car",
-    image: '/Users/ferdmas/Dev/work/SadaqamediaRN/src/data/image/car/car-1.jpg',
+    image: '/Users/ferdmas/Dev/work/SMPortalRN/src/data/image/car/car-1.jpg',
     itemCondition: "Used",
     itemQuantity: "Single",
     donor: "@jmulaney",
@@ -20,7 +20,7 @@ export default [
   {
     id: '3',
     title: "Checkered Red Shirt",
-    image: '/Users/ferdmas/Dev/work/SadaqamediaRN/src/data/image/shirt/shirt-1.jpeg',
+    image: '/Users/ferdmas/Dev/work/SMPortalRN/src/data/image/shirt/shirt-1.jpeg',
     itemCondition: "New",
     itemQuantity: "Bulk",
     donor: "@jmalkovich",
@@ -29,7 +29,7 @@ export default [
   {
     id: '4',
     title: "Phillips Steamer",
-    image: '/Users/ferdmas/Dev/work/SadaqamediaRN/src/data/image/steamer/steamer-1.jpg',
+    image: '/Users/ferdmas/Dev/work/SMPortalRN/src/data/image/steamer/steamer-1.jpg',
     itemCondition: "Used",
     itemQuantity: "Bulk",
     donor: "@shahjali",
@@ -38,7 +38,7 @@ export default [
   {
     id: '5',
     title: "Sony Tv 4K Ultra HD",
-    image: '/Users/ferdmas/Dev/work/SadaqamediaRN/src/data/image/tv4k/tv-1.jpeg',
+    image: '/Users/ferdmas/Dev/work/SMPortalRN/src/data/image/tv4k/tv-1.jpeg',
     itemCondition: "New",
     itemQuantity: "Single",
     donor: "@jamalabdi",
@@ -47,7 +47,7 @@ export default [
   {
     id: '6',
     title: "Fossil Watch Black Background",
-    image: '/Users/ferdmas/Dev/work/SadaqamediaRN/src/data/image/watch/watch-1.jpeg',
+    image: '/Users/ferdmas/Dev/work/SMPortalRN/src/data/image/watch/watch-1.jpeg',
     itemCondition: "New",
     itemQuantity: "Single",
     donor: "@pottyharry",

@@ -10,11 +10,11 @@ import styles from './styles.ios';
 // }
 
 const ChooseImage = () => {
-  const [image1, setImage1] = useState('/Users/ferdmas/Dev/work/SadaqamediaRN/src/data/image/addphoto.png');
-  const [image2, setImage2] = useState('/Users/ferdmas/Dev/work/SadaqamediaRN/src/data/image/addphoto.png');
-  const [image3, setImage3] = useState('/Users/ferdmas/Dev/work/SadaqamediaRN/src/data/image/addphoto.png');
-  const [image4, setImage4] = useState('/Users/ferdmas/Dev/work/SadaqamediaRN/src/data/image/addphoto.png');
-  const [image5, setImage5] = useState('/Users/ferdmas/Dev/work/SadaqamediaRN/src/data/image/addphoto.png');
+  const [image1, setImage1] = useState('/Users/ferdmas/Dev/work/SMPortalRN/src/data/image/addphoto.png');
+  const [image2, setImage2] = useState('/Users/ferdmas/Dev/work/SMPortalRN/src/data/image/addphoto.png');
+  const [image3, setImage3] = useState('/Users/ferdmas/Dev/work/SMPortalRN/src/data/image/addphoto.png');
+  const [image4, setImage4] = useState('/Users/ferdmas/Dev/work/SMPortalRN/src/data/image/addphoto.png');
+  const [image5, setImage5] = useState('/Users/ferdmas/Dev/work/SMPortalRN/src/data/image/addphoto.png');
   
   const sheetRef = React.useRef(null);
 
