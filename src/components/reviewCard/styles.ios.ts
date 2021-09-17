@@ -4,38 +4,60 @@ import defaultStyles from "../../globalstyles/defaultStyles";
 const styles = StyleSheet.create (
     {
     root: {
-        flex: 1,
-        flexDirection: 'column',
         shadowColor: 'black',
         shadowOffset: {width: 0, height: 2},
         shadowOpacity: 0.1,
         shadowRadius: 4,
-        borderWidth: 0,
-        borderColor: defaultStyles.color.primary,
         borderRadius: 10,
         backgroundColor: defaultStyles.color.backgroundLightSecondary,
-        padding: 0,
-        marginVertical: 10,
-        marginHorizontal: 10,
         margin: 10,
-        height: 256,
+    },
+    summaryContainer: {
+        flexDirection: 'row',
+        alignItems: "center",
+        justifyContent: "space-between", 
+        borderBottomWidth: 1,
+        borderBottomColor: defaultStyles.color.backgroundAccent    
     },
     imageContainer: {
-        width: "100%",
-        height: 156,
+        width: 96,
+        height: 96,
     },
     image: {
-        flex: 1,
-        height: 150,
+        height: '100%',
         width: '100%',
         resizeMode: 'contain',
+        borderTopLeftRadius: 10,
+        overflow: "hidden",
     },
     detailContainer:{
         padding: 10,
+        width: 160,
     },
-    title: {
-        fontWeight: "bold",
+    profileImageContainer: {
+        marginHorizontal: 16,
     },
+    profileImage: {
+        width: 64,
+        height: 64,
+        resizeMode: "cover",
+        backgroundColor: 'red',
+        borderRadius: 64,
+        overflow: "hidden",
+    },
+    reviewContainer: {
+        padding: 16
+    },
+    ratingContainer: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        marginVertical: 8,
+    },
+    starRatingContainer: {
+        flexDirection: "row",
+        justifyContent: "center",
+    }
 }
 )
 

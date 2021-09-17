@@ -12,17 +12,12 @@ interface secondHeaderProp {
     Icon2?: object
     Icon3?: object
     Icon4?: object
+    containerStyle?: object
 }
 
 const Header = (props: secondHeaderProp) => {
-    const navigation = useNavigation();
-
-    const onBack = () => {
-        navigation.goBack();
-        return
-    }
     return (
-        <View style={styles.root}>
+        <View style={[styles.root, props.containerStyle]}>
             <View style={styles.backBtnContainer}>
                 {props.Icon1}
             </View>

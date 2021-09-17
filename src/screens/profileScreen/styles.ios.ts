@@ -9,7 +9,7 @@ const styles = StyleSheet.create ({
   itemContainer: {
     padding: 8,
     paddingTop: 8,
-    height: 420,
+    height: 422,
     backgroundColor: defaultStyles.color.backgroundLight,
     borderTopStartRadius: 20,
     borderTopRightRadius: 20,

@@ -26,7 +26,6 @@ const SecondRoute = () => {
          <FlatList
                 data= {items}
                 renderItem={({item}) => <ReviewCard item={item}/>}
-                numColumns={2}
                 showsVerticalScrollIndicator= {false}
                 // ListHeaderComponent={<Text style={[textStyles.h3, {color:defaultStyle.color.text, paddingVertical: 16, marginLeft: 24}]}>Your Daily Picks</Text>}
                 />

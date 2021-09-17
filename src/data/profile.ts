@@ -1,9 +1,9 @@
 export default [
     {
         uid: '1',
-        username: '@fiziying',
-        name: 'Ahmad Fiziying Jumhuri',
-        image: '/Users/ferdmas/Dev/work/SMPortalRN/src/data/image/profile/profile-1.png',
+        username: '@lsyakiru',
+        name: 'Lawal Syakiru Ermanshah',
+        image: '/Users/ferdmas/Dev/work/SMPortalRN/src/data/image/profile/lawal.jpg',
         joinedDate: 'March 2020',
         verification: 'Identity Verified',
         avgRating: 3.2,

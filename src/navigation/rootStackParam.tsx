@@ -6,4 +6,5 @@ export type RootStackParamList = {
     MessageScreen: undefined;
     ReviewScreen: {id: string};
     ProfileScreen: undefined;
+    SettingScreen: undefined;
     };

@@ -3,6 +3,7 @@ import {Image, View, ScrollView, Text, ImageProps, StyleSheet, TouchableOpacity}
 import ImagePicker, {ImageOrVideo} from 'react-native-image-crop-picker';
 import BottomSheet from 'reanimated-bottom-sheet'
 import defaultStyle from '../../globalstyles/defaultStyles';
+import CommonButton from '../button';
 import styles from './styles.ios';
 
 // interface AvatarProps extends ImageProps {
@@ -56,17 +57,21 @@ const ChooseImage = () => {
         <Text style={styles.panelTitle}>Upload Photo</Text>
         <Text style={styles.panelSubtitle}>Choose Your Profile Picture</Text>
       </View>
-      <TouchableOpacity style={styles.panelButton} onPress={takePhotoFromCamera}>
-        <Text style={styles.panelButtonTitle}>Take Photo</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.panelButton} onPress={choosePhotoFromLibrary}>
-        <Text style={styles.panelButtonTitle}>Choose From Library</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.panelButton}
-        onPress={() => sheetRef.current.snapTo(2)}>
-        <Text style={styles.panelButtonTitle}>Cancel</Text>
-      </TouchableOpacity>
+      <CommonButton 
+        primaryBackground 
+        primaryText 
+        buttonText={"Take Photo"} 
+        onPress={takePhotoFromCamera}/>
+      <CommonButton 
+        primaryBackground 
+        primaryText 
+        buttonText={"Choose From Library"} 
+        onPress={choosePhotoFromLibrary}/>
+      <CommonButton 
+        primaryBackground={false} 
+        primaryText={false} 
+        buttonText={"Cancel"} 
+        onPress={()=> sheetRef.current.snapTo(2)}/>
     </View>
   );
 

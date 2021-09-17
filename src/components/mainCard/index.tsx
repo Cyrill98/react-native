@@ -3,7 +3,7 @@ import { View, Text, Pressable, Image } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack';
 
-import { RootStackParamList } from '../../router/rootStackParam'
+import { RootStackParamList } from '../../navigation/rootStackParam'
 import styles from './styles.ios'
 
 interface ItemOverviewProps {

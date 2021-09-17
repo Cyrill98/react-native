@@ -14,6 +14,7 @@ import FavouriteScreen from '../screens/favouriteScreen';
 import MessageScreen from '../screens/messageScreen';
 import ProfileScreen from '../screens/profileScreen';
 import ReviewScreen from '../screens/reviewScreen';
+import SettingScreen from '../screens/settingScreen';
 
 type profileScreenProp = StackNavigationProp<RootStackParamList, 'ProfileScreen'>;
 
@@ -47,22 +48,55 @@ const ProfileStack = () => {
                     options={{
                         headerShown: false,
                         title:'',
-                        header: () => 
-                            <Header
-                            SearchBar={false}
-                            Icon1={ <Ionicons name="chevron-back" size={24} style={{marginLeft: 8}} onPress={onBack}/>}
-                            />
+                        // header: () => 
+                        //     <Header
+                        //     SearchBar={false}
+                        //     Icon1={ <Ionicons name="chevron-back" size={24} style={{marginLeft: 8}} onPress={onBack}/>}
+                        //     />
                         }}/>
                 <Stack.Screen 
                     component={ReviewScreen} 
                     name='ReviewScreen'
                     options={{
                         headerShown: false,
-                        header: () => 
-                            <Header
-                            SearchBar={false}
-                            Icon1={ <Ionicons name="chevron-back" size={24} style={{marginLeft: 8}} onPress={onBack}/>}
-                            />
+                        // header: () => 
+                        //     <Header
+                        //     SearchBar={false}
+                        //     Icon1={ <Ionicons name="chevron-back" size={24} style={{marginLeft: 8}} onPress={onBack}/>}
+                        //     />
+                        }}/>
+                        <Stack.Screen 
+                    component={FavouriteScreen} 
+                    name='FavouriteScreen'
+                    options={{
+                        headerShown: false,
+                        // header: () => 
+                        //     <Header
+                        //     SearchBar={false}
+                        //     Icon1={ <Ionicons name="chevron-back" size={24} style={{marginLeft: 8}} onPress={onBack}/>}
+                        //     />
+                        }}/>
+                <Stack.Screen 
+                    component={MessageScreen} 
+                    name='MessageScreen'
+                    options={{
+                        headerShown: false,
+                        // header: () => 
+                        //     <Header
+                        //     SearchBar={false}
+                        //     Icon1={ <Ionicons name="chevron-back" size={24} style={{marginLeft: 8}} onPress={onBack}/>}
+                        //     />
+                        }}/>
+                <Stack.Screen 
+                    component={SettingScreen} 
+                    name='SettingScreen'
+                    options={{
+                        headerShown: false,
+                        // header: () => 
+                        //     <Header
+                        //     SearchBar={false}
+                        //     Icon1={ <Ionicons name="chevron-back" size={24} style={{marginLeft: 8}} onPress={onBack}/>}
+                        //     />
                         }}/>
             </Stack.Navigator>
     )

@@ -34,13 +34,13 @@ export default [
   
   donor: '@fiziying',
   donorJoinedDate: 'March 2015',
-  donorImage: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/products/mouse1.jpg',
+  donorImage: '/Users/ferdmas/Dev/work/SMPortalRN/src/data/image/profile/fiziying.png',
   donorAvgRating: 4.8,
   donorRatingCount: 2989,
 
   taker: '@jmulaney',
   takerJoinedDate: 'April 2021',
-  takerImage: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/products/mouse1.jpg',
+  takerImage: '/Users/ferdmas/Dev/work/SMPortalRN/src/data/image/profile/jmulaney.jpg',
   takerAvgRating: 4.6,
   takerRatingCount: 567,
 
@@ -86,13 +86,13 @@ export default [
   
   donor: '@fiziying',
   donorJoinedDate: 'March 2015',
-  donorImage: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/products/mouse1.jpg',
+  donorImage: '/Users/ferdmas/Dev/work/SMPortalRN/src/data/image/profile/fiziying.png',
   donorAvgRating: 4.8,
   donorRatingCount: 2989,
 
   taker: '@jmulaney',
   takerJoinedDate: 'April 2021',
-  takerImage: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/products/mouse1.jpg',
+  takerImage: '/Users/ferdmas/Dev/work/SMPortalRN/src/data/image/profile/pottyharry.jpg',
   takerAvgRating: 4.6,
   takerRatingCount: 567,
 

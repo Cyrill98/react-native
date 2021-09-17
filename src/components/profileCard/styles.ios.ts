@@ -6,16 +6,16 @@ const styles = StyleSheet.create ({
         backgroundColor: defaultStyles.color.backgroundOverlay,
     },
     profileContainer: {
-        paddingTop: 16,
+        paddingVertical: 16,
+        paddingHorizontal: 24,
         flexDirection: "row",
         justifyContent: "space-between",
-        padding: 24,
     },
     profileImage: {
         height: 136,
         width: 136,
         borderRadius: 40,
-        marginBottom: 24, 
+        marginBottom: 12, 
     },
     profileDetail: {
         flexDirection: "column",

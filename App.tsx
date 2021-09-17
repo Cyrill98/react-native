@@ -29,7 +29,7 @@
  import Homescreen from './src/screens/homeScreen';
  import ProfileScreen from './src/screens/profileScreen';
  import ItemDetailsScreen from './src/screens/itemDetailScreen';
- import Router from './src/router';
+ import Router from './src/navigation';
  import 'react-native-gesture-handler';
  import AddressScreen from './src/screens/addressScreen';
  import defaultStyle from './src/globalstyles/defaultStyles';

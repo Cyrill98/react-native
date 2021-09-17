@@ -62,28 +62,7 @@ const HomeStack = () => {
                             Icon1={ <Ionicons name="chevron-back" size={24} style={{marginLeft: 8}} onPress={onBack}/>}
                             />
                         }}/>
-                <Stack.Screen 
-                    component={FavouriteScreen} 
-                    name='FavouriteScreen'
-                    options={{
-                        headerShown: true,
-                        header: () => 
-                            <Header
-                            SearchBar={false}
-                            Icon1={ <Ionicons name="chevron-back" size={24} style={{marginLeft: 8}} onPress={onBack}/>}
-                            />
-                        }}/>
-                <Stack.Screen 
-                    component={MessageScreen} 
-                    name='MessageScreen'
-                    options={{
-                        headerShown: true,
-                        header: () => 
-                            <Header
-                            SearchBar={false}
-                            Icon1={ <Ionicons name="chevron-back" size={24} style={{marginLeft: 8}} onPress={onBack}/>}
-                            />
-                        }}/>
+                
             </Stack.Navigator>
     )
 }

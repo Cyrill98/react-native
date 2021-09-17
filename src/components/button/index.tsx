@@ -8,7 +8,7 @@ import styles from '../button/styles.ios';
 interface buttonProp {
     buttonText: string;
     onPress?: () => void;
-    //containerStyles?: object;
+    containerStyles?: object;
     primaryBackground: boolean;
     primaryText: boolean;
 }
@@ -19,7 +19,7 @@ const CommonButton = (props: buttonProp) => {
     const background_color = primaryBackground ? defaultStyle.color.primary : defaultStyle.color.primary5;
     const text_color = primaryText ? defaultStyle.color.altText : defaultStyle.color.primary;
     return (
-        <TouchableOpacity style={[styles.button, {backgroundColor: background_color}]} onPress={props.onPress}>
+        <TouchableOpacity style={[styles.button, props.containerStyles ,{backgroundColor: background_color}]} onPress={props.onPress}>
             <Text style={[textStyles.button, {color: text_color}]}>{props.buttonText}</Text>
         </TouchableOpacity>
     )

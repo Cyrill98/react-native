@@ -28,7 +28,7 @@ const ProfileCard = (props: ProfileDetailProp) => {
     return (
         <View>
             <View style={styles.container}>
-                <Text style={[textStyles.h3, {color:defaultStyle.color.altText, paddingTop: 24, paddingLeft: 24}]}>Profile</Text>
+                {/* <Text style={[textStyles.h3, {color:defaultStyle.color.altText, paddingTop: 24, paddingLeft: 24}]}>Profile</Text> */}
                 <View style={styles.profileContainer}>
                     <View>
                         <Image source={{uri : profile.image}} style={styles.profileImage} />

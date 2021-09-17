@@ -7,7 +7,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
-import { RootStackParamList } from '../../router/rootStackParam'
+import { RootStackParamList } from '../../navigation/rootStackParam'
 import styles from '../itemDetail/styles.ios'
 import ImageCarousel from '../../components/imageCarousel'
 import globalStyles from '../../globalstyles/defaultStyles'
