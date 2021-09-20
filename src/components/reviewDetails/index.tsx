@@ -21,37 +21,16 @@ interface ItemOverviewProps {
         takerImage: string
         takerRatingToDonor: number,
         takerReviewToDonor: string,
+        donorReviewReplyToTaker: string,
     }
 }
 
 type homeScreenProp = StackNavigationProp<RootStackParamList, 'HomeScreen'>;
 
-const ReviewCard = (props: ItemOverviewProps) => {
+const ReviewDetails = (props: ItemOverviewProps) => {
     const navigation = useNavigation<homeScreenProp>();
     const item = props.item;
-    const onPress = () => {
-        navigation.navigate('ReviewScreen', {id: item.id});
-    };
     return (
-        <Pressable onPress={onPress} style={styles.root}>
-            <View style={styles.summaryContainer}>
-                <View style={styles.imageContainer}>
-                    <Image style={styles.image} source={{ uri: item.image}}></Image> 
-                </View>
-                <View style={styles.detailContainer}>
-                    {/* Donor */}
-                    <Text style={textStyles.subtitle}>{item.taker}</Text>
-                    {/* Joined Date */}
-                    <Text style={textStyles.small}>{item.donorJoinedDate}</Text>
-                    {/* Title */}
-                    <Text style={textStyles.small} numberOfLines={1}>{item.title} </Text>
-                    {/* Item Condition & Quantity*/}
-                    <Text style={textStyles.extrasmall}>{item.itemCondition} . {item.itemQuantity}</Text>
-                </View>
-                <View style={styles.profileImageContainer}>
-                    <Image style={styles.profileImage} source={{ uri: item.takerImage}}></Image> 
-                </View>
-            </View>
             <View style={styles.reviewContainer}>
                 <View style={styles.ratingContainer}>
                     <Text style={textStyles.bold}>Overall Rating</Text>
@@ -65,10 +44,16 @@ const ReviewCard = (props: ItemOverviewProps) => {
                         )}
                     </View> 
                 </View>
-                <Text numberOfLines={3} style={textStyles.body}>{item.takerReviewToDonor}</Text>
+                {/* Hairline */}
+                <View style={styles.hairline}></View>
+                {/* Review */}
+                <Text style={textStyles.bold}>Review</Text>
+                <Text style={[textStyles.body, {paddingTop: 16}]}>{item.takerReviewToDonor}</Text>
+                {/* Review Reply */}
+                <Text style={[textStyles.bold, {paddingTop: 16}]}>Review Reply</Text>
+                <Text style={[textStyles.body, {paddingTop: 16}]}>{item.donorReviewReplyToTaker}</Text>
             </View>
-        </Pressable>
     )
 }
 
-export default ReviewCard
+export default ReviewDetails

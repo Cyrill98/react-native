@@ -7,6 +7,7 @@ import styles from '../button/styles.ios';
 
 interface buttonProp {
     buttonText: string;
+    buttonOption?: () => void;
     onPress?: () => void;
     containerStyles?: object;
     primaryBackground: boolean;

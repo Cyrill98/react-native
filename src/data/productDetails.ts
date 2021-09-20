@@ -2,7 +2,7 @@ export default [
 {
   id: '1',
   transactionNumber: '',
-  itemStatus: "Published",
+  itemStatus: "Listed",
   timeStamp: "3 weeks ago",
   category: "Home & Furnishing",
   title: "Ikea Chair Model Jotunheim 2018",
@@ -26,7 +26,7 @@ export default [
   deliveryPrice: "West Malaysia",
 
   requestCount: 23,
-  requestedBy: ["User 1", "User 2", "User 3", "User 4"],
+  requestedBy: ["@lsyakir", "User 2", "User 3", "User 4"],
   favouriteCount: 12,
   favouritedBy: ["User 1", "User 2", "User 3", "User 4"],
   shareCount: 56,
@@ -38,7 +38,7 @@ export default [
   donorAvgRating: 4.8,
   donorRatingCount: 2989,
 
-  taker: '@jmulaney',
+  taker: '@lsyakiru',
   takerJoinedDate: 'April 2021',
   takerImage: '/Users/ferdmas/Dev/work/SMPortalRN/src/data/image/profile/jmulaney.jpg',
   takerAvgRating: 4.6,
@@ -50,7 +50,7 @@ export default [
   takerReviewReplyToDonor: '',
   takerReviewreplyTimeStamp: '',
   takerRatingToDonor: 4,
-  takerReviewToDonor: 'Fizi is a very helpful donor. He assisted me throughout the while process and made sure I receive the item in a timely manner.',
+  takerReviewToDonor: 'Fizi is a very helpful donor. He assisted me throughout the while process and made sure I receive the item in a timely manner. He also made sure that I get the item in a good manner. I really appreciated his help and would definitely recommend him to future takers.',
   takerReviewTimeStamp: '2 days ago',
   donorReviewReplyToTaker: '',
   donorReviewreplyTimeStamp: '',

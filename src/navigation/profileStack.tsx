@@ -65,7 +65,7 @@ const ProfileStack = () => {
                         //     Icon1={ <Ionicons name="chevron-back" size={24} style={{marginLeft: 8}} onPress={onBack}/>}
                         //     />
                         }}/>
-                        <Stack.Screen 
+                <Stack.Screen 
                     component={FavouriteScreen} 
                     name='FavouriteScreen'
                     options={{

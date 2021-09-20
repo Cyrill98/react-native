@@ -13,6 +13,7 @@ import ImageCarousel from '../../components/imageCarousel'
 import globalStyles from '../../globalstyles/defaultStyles'
 import textStyles from '../../globalstyles/textSyles'
 import CommonButton from '../../components/button'
+import StatusTag from '../statusTag'
 import defaultStyle from '../../globalstyles/defaultStyles'
 
 interface ItemDetailProp {
@@ -27,6 +28,7 @@ interface ItemDetailProp {
         location: string,
         favouriteCount: number,
         requestCount: number,
+        requestedBy: string[],
         timeStamp: string,
         itemCondition: string,
         itemQuantity: string,
@@ -48,6 +50,8 @@ interface ItemDetailProp {
 type itemDetailScreenProp = StackNavigationProp<RootStackParamList, 'ItemDetailsScreen'>;
 
 const ItemDetails = (props: ItemDetailProp) => {
+    const itemDetail = props.item;
+    const user = "@lsyakiru"
     const navigation = useNavigation<itemDetailScreenProp>();
     const route = useRoute();
     //console.warn(route.params);
@@ -55,20 +59,72 @@ const ItemDetails = (props: ItemDetailProp) => {
         //console.warn('test')
         navigation.navigate('AddressScreen')
     };
-    const itemDetail = props.item;
+
+    const ButtonOption = () => {
+    // Logic
+    // 1. if itemStatus is "Listed", 
+    //         if donor is user, then can tap "list of requestors"
+    //         else if requestedby list includes user, 
+    //              then can tap "Cancel Request" (if user is included in requested by list)
+    //              or can tap "Request" (if not included in the list)
+    // 2. if itemStatus is "In Process",
+    //         if donor is user, then can tap "Mark as Unreserved",
+    //         else if taker is user, then can tap "Item Received"
+    //         else if donor/taker is not user, no button
+    // 3. if itemStatus is "Process Completed",
+    //         if donor/taker is user, then can tap "Leave Review"
+
+        if (itemDetail.itemStatus == "Listed"){
+            if(itemDetail.donor == user){
+                return <CommonButton buttonText={"List of Requestors"} primaryText primaryBackground/>
+            } { 
+                if (itemDetail.requestedBy.includes(user)) {
+                    return <CommonButton buttonText={"Cancel Request"} primaryText primaryBackground/>
+                } {
+                    return <CommonButton buttonText={"Request"} primaryText primaryBackground onPress={onRequest}/> 
+                }  
+            }
+        } else if (itemDetail.itemStatus == "In Process"){
+            if(itemDetail.donor == user){
+                return <CommonButton buttonText={"Mark as Unreserved"} primaryText primaryBackground/>
+            } else if (itemDetail.taker == user) {
+                return <CommonButton buttonText={"Item Received"} primaryText primaryBackground onPress={onRequest}/>
+            }     
+        } else if (itemDetail.itemStatus == "Process Completed"){
+            if(itemDetail.donor == user){
+                return <CommonButton buttonText={"Leave review"} primaryText primaryBackground/>
+            } else if (itemDetail.taker == user) {
+                return <CommonButton buttonText={"Leave review"} primaryText primaryBackground onPress={onRequest}/>
+            } return
+        } return
+    }
+
+    const ItemTag = () => {
+        if (itemDetail.itemStatus == "In Process") {
+            if (itemDetail.donor == user) {
+                return <StatusTag tagText={"Item Reserved"}/>
+            } else if (itemDetail.taker == user) {
+                return <StatusTag tagText={"Request Accepted"}/>
+            } return
+        }
+    }
+
+
     return (
         <ScrollView showsVerticalScrollIndicator={false}>
             {/* Image Carousel */}
             <ImageCarousel images={itemDetail.images}/>
             <View style={styles.container}>
                 {/* Item Status */}
-                {(!!itemDetail.itemStatus?.includes("Reserved") || 
+                {ItemTag()}
+                {/* {(!!itemDetail.itemStatus?.includes("Reserved") || 
                 !!itemDetail.itemStatus?.includes("Accepted")) && 
                 <View style={styles.tag}> 
                     <Text style={[textStyles.button, {textAlign: 'center', color: globalStyles.color.text}]}>{props.item.itemStatus}</Text>
-                </View>}
+                </View>} */}
                 <View style={styles.detailContainer}>
-                    <CommonButton onPress={onRequest} buttonText={'Request'} primaryBackground primaryText/>
+                    {/* Action Button */}
+                    {ButtonOption()}
                     <View style={{flexDirection: 'row', justifyContent: 'space-between', marginVertical: 16}}>
                         <View style={{flex:1}}>
                             {/* Title */}

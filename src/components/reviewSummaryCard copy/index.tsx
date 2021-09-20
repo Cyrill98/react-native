@@ -26,14 +26,11 @@ interface ItemOverviewProps {
 
 type homeScreenProp = StackNavigationProp<RootStackParamList, 'HomeScreen'>;
 
-const ReviewCard = (props: ItemOverviewProps) => {
+const ReviewSummaryCard = (props: ItemOverviewProps) => {
     const navigation = useNavigation<homeScreenProp>();
     const item = props.item;
-    const onPress = () => {
-        navigation.navigate('ReviewScreen', {id: item.id});
-    };
     return (
-        <Pressable onPress={onPress} style={styles.root}>
+        <Pressable style={styles.root}>
             <View style={styles.summaryContainer}>
                 <View style={styles.imageContainer}>
                     <Image style={styles.image} source={{ uri: item.image}}></Image> 
@@ -52,23 +49,8 @@ const ReviewCard = (props: ItemOverviewProps) => {
                     <Image style={styles.profileImage} source={{ uri: item.takerImage}}></Image> 
                 </View>
             </View>
-            <View style={styles.reviewContainer}>
-                <View style={styles.ratingContainer}>
-                    <Text style={textStyles.bold}>Overall Rating</Text>
-                    <View style={styles.starRatingContainer}>
-                        {[0,0,0,0,0].map((el, i) => 
-                        <MaterialIcons
-                        name={i < Math.floor(item.takerRatingToDonor) ? 'star' : 'star-border'}
-                        color={i < Math.floor(item.takerRatingToDonor) ? defaultStyle.color.stars : defaultStyle.color.subtleText}
-                        size={24}
-                        />
-                        )}
-                    </View> 
-                </View>
-                <Text numberOfLines={3} style={textStyles.body}>{item.takerReviewToDonor}</Text>
-            </View>
         </Pressable>
     )
 }
 
-export default ReviewCard
+export default ReviewSummaryCard
