@@ -7,4 +7,18 @@ export type RootStackParamList = {
     ReviewScreen: {id: string};
     ProfileScreen: undefined;
     SettingScreen: undefined;
+    EditProfileScreen: undefined;
+    EditAddressScreen: undefined;
+    ChangePasswordScreen: undefined;
+    VerificationScreen: undefined;
+    NotificationSettingsScreen: undefined;
+    PrivacySettingsScreen: undefined;
+    HelpCentreScreen: undefined;
+    ContactUsScreen: undefined;
+    CommunityRulesScreen: undefined;
+    TipsScreen: undefined;
+    FAQScreen: undefined;
+    AboutScreen: undefined;
+    RoadmapScreen: undefined;
+    TNCScreen: undefined;
     };

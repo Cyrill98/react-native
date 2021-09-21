@@ -15,6 +15,7 @@ import MessageScreen from '../screens/messageScreen';
 import ProfileScreen from '../screens/profileScreen';
 import ReviewScreen from '../screens/reviewScreen';
 import SettingScreen from '../screens/settingScreen';
+import SettingsStack from './settingsStack';
 
 type profileScreenProp = StackNavigationProp<RootStackParamList, 'ProfileScreen'>;
 
@@ -88,7 +89,7 @@ const ProfileStack = () => {
                         //     />
                         }}/>
                 <Stack.Screen 
-                    component={SettingScreen} 
+                    component={SettingsStack} 
                     name='SettingScreen'
                     options={{
                         headerShown: false,
