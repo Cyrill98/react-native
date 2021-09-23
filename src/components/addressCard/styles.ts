@@ -3,9 +3,6 @@ import defaultStyle from "../../globalstyles/defaultStyles";
 
 const styles = StyleSheet.create({
     root: {
-        backgroundColor: defaultStyle.color.backgroundLight
-    },
-    card: {
         borderRadius: 8,
         backgroundColor: defaultStyle.color.backgroundLightSecondary,
         shadowColor: 'black',

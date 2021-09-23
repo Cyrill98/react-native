@@ -8,6 +8,7 @@ import textStyles from '../../globalstyles/textSyles'
 import defaultStyle from '../../globalstyles/defaultStyles'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { RootStackParamList } from '../../navigation/rootStackParam'
+import CommonButton from '../../components/button'
 
 type settingScreenProp = StackNavigationProp<RootStackParamList>;
 
@@ -58,6 +59,9 @@ const SettingScreen = () => {
     }
     const onTnC = () => {
         navigation.navigate('TNCScreen')
+    }
+    const onLogout = () => {
+        
     }
 
     return (
@@ -121,6 +125,7 @@ const SettingScreen = () => {
                         <Text style={textStyles.body}>Terms & Conditions</Text>
                     </Pressable>  
                 </View>
+                <CommonButton buttonText={"Logout"} primaryBackground primaryText onPress={onLogout}/>
                 
             </View>
                    
