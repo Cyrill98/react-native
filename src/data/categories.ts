@@ -1,7 +1,6 @@
 export default [
     "Men's Fashion",
     "Women's Fashion",
-    "Home & Furniture",
     "Tickets & Vouchers",
     "Home & Furnishing",
     "Kitchen & Appliances",

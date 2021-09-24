@@ -9,8 +9,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: 24,
         height: 420,
         backgroundColor: defaultStyle.color.backgroundLight,
-        borderTopStartRadius: 20,
-        borderTopRightRadius: 20,
     },
     inputContainer: {
         marginTop: 8,

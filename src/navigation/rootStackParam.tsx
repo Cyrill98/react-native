@@ -21,4 +21,5 @@ export type RootStackParamList = {
     AboutScreen: undefined;
     RoadmapScreen: undefined;
     TNCScreen: undefined;
+    PrivacyPolicyScreen: undefined;
     };

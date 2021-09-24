@@ -11,11 +11,12 @@ import EditProfileScreen from '../screens/editProfileScreen';
 import FAQScreen from '../screens/faqScreen';
 import HelpCentreScreen from '../screens/helpCentreScreen';
 import NotificationSettingsScreen from '../screens/notificationSettingsScreen';
+import TNCScreen from '../screens/tncScreen';
 import PrivacySettingsScreen from '../screens/privacySettingsScreen';
 import RoadmapScreen from '../screens/roadmapScreen';
 import SettingScreen from '../screens/settingScreen';
 import TipsScreen from '../screens/tipsScreen';
-import TNCScreen from '../screens/tncScreen';
+import PrivacyPolicyScreen from '../screens/privacyPolicyScreen';
 import VerificationScreen from '../screens/verificationScreen';
 
 
@@ -140,6 +141,14 @@ const SettingsStack = () => {
             <Stack.Screen
                 component={TNCScreen}
                 name="TNCScreen"
+                options={{
+                    title: '',
+                    headerShown: false
+                }}
+                />
+            <Stack.Screen
+                component={PrivacyPolicyScreen}
+                name="PrivacyPolicyScreen"
                 options={{
                     title: '',
                     headerShown: false

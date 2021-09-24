@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, ScrollView, Text, Pressable } from 'react-native'
+import { View, ScrollView, Text, Pressable, Linking, Alert} from 'react-native'
 import Header from '../../components/header'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import styles from './styles'
@@ -58,7 +58,18 @@ const SettingScreen = () => {
         navigation.navigate('RoadmapScreen')
     }
     const onTnC = () => {
-        navigation.navigate('TNCScreen')
+        // navigation.navigate('TNCScreen')
+        Linking.openURL('https://www.sadaqamedia.examedia.my/terms-conditions/') .catch(err => {
+            console.error("Failed opening page because: ", err)
+            Alert.alert('Failed to open page')
+        })
+    }
+    const onPrivacyPolicy = () => {
+        // navigation.navigate('PrivacyPolicyScreen')
+        Linking.openURL('https://www.sadaqamedia.examedia.my/privacy-policy/') .catch(err => {
+            console.error("Failed opening page because: ", err)
+            Alert.alert('Failed to open page')
+        })
     }
     const onLogout = () => {
         
@@ -82,9 +93,9 @@ const SettingScreen = () => {
                     <Pressable style={styles.link} onPress={onChangePassword}>
                         <Text style={textStyles.body}>Change Password</Text>
                     </Pressable> 
-                    <Pressable style={styles.link} onPress={onVerification}>
+                    {/* <Pressable style={styles.link} onPress={onVerification}>
                         <Text style={textStyles.body}>Verification</Text>
-                    </Pressable> 
+                    </Pressable>  */}
                 </View>
                 <View style={styles.subContainer} >
                     <Text style={textStyles.subtitle}>Settings</Text>
@@ -97,15 +108,15 @@ const SettingScreen = () => {
                 </View>
                 <View style={styles.subContainer}>
                     <Text style={textStyles.subtitle}>Support</Text>
-                    <Pressable style={styles.link} onPress={onHelpCentre}>
+                    {/* <Pressable style={styles.link} onPress={onHelpCentre}>
                         <Text style={textStyles.body}>Help Centre</Text>
-                    </Pressable> 
+                    </Pressable>  */}
                     <Pressable style={styles.link} onPress={onContactUs}>
                         <Text style={textStyles.body}>Contact Us</Text>
                     </Pressable> 
-                    <Pressable style={styles.link} onPress={onCommunityRules}>
+                    {/* <Pressable style={styles.link} onPress={onCommunityRules}>
                         <Text style={textStyles.body}>Community Rules</Text>
-                    </Pressable> 
+                    </Pressable>  */}
                     <Pressable style={styles.link} onPress={onTips}>
                         <Text style={textStyles.body}>Tips</Text>
                     </Pressable> 
@@ -118,11 +129,14 @@ const SettingScreen = () => {
                     <Pressable style={styles.link} onPress={onAboutSadaqamedia}>
                         <Text style={textStyles.body}>About Sadaqamedia</Text>
                     </Pressable> 
-                    <Pressable style={styles.link} onPress={onRoadmap}>
+                    {/* <Pressable style={styles.link} onPress={onRoadmap}>
                         <Text style={textStyles.body}>Roadmap</Text>
-                    </Pressable> 
+                    </Pressable>  */}
                     <Pressable style={styles.link} onPress={onTnC}>
                         <Text style={textStyles.body}>Terms & Conditions</Text>
+                    </Pressable>  
+                    <Pressable style={styles.link} onPress={onPrivacyPolicy}>
+                        <Text style={textStyles.body}>Privacy Policy</Text>
                     </Pressable>  
                 </View>
                 <CommonButton buttonText={"Logout"} primaryBackground primaryText onPress={onLogout}/>
