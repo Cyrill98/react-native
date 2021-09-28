@@ -59,6 +59,16 @@ const ItemDetails = (props: ItemDetailProp) => {
         //console.warn('test')
         navigation.navigate('AddressScreen')
     };
+    const onCancelRequest = () => {
+    };
+    const onListOfRequestors = () => {
+    };
+    const onMarkAsUnreserved = () => {
+    };
+    const onItemReceived = () => {
+    };
+    const onLeaveReview = () => {
+    };
 
     const ButtonOption = () => {
     // Logic
@@ -76,25 +86,25 @@ const ItemDetails = (props: ItemDetailProp) => {
 
         if (itemDetail.itemStatus == "Listed"){
             if(itemDetail.donor == user){
-                return <CommonButton buttonText={"List of Requestors"} primaryText primaryBackground/>
+                return <CommonButton buttonText={"List of Requestors"} primaryText primaryBackground onPress={onListOfRequestors}/>
             } { 
                 if (itemDetail.requestedBy.includes(user)) {
-                    return <CommonButton buttonText={"Cancel Request"} primaryText primaryBackground/>
+                    return <CommonButton buttonText={"Cancel Request"} primaryText primaryBackground onPress={onCancelRequest}/>
                 } {
                     return <CommonButton buttonText={"Request"} primaryText primaryBackground onPress={onRequest}/> 
                 }  
             }
         } else if (itemDetail.itemStatus == "In Process"){
             if(itemDetail.donor == user){
-                return <CommonButton buttonText={"Mark as Unreserved"} primaryText primaryBackground/>
+                return <CommonButton buttonText={"Mark as Unreserved"} primaryText primaryBackground onPress={onMarkAsUnreserved}/>
             } else if (itemDetail.taker == user) {
-                return <CommonButton buttonText={"Item Received"} primaryText primaryBackground onPress={onRequest}/>
+                return <CommonButton buttonText={"Item Received"} primaryText primaryBackground onPress={onItemReceived}/>
             }     
-        } else if (itemDetail.itemStatus == "Process Completed"){
+        } else if (itemDetail.itemStatus == "Completed"){
             if(itemDetail.donor == user){
                 return <CommonButton buttonText={"Leave review"} primaryText primaryBackground/>
             } else if (itemDetail.taker == user) {
-                return <CommonButton buttonText={"Leave review"} primaryText primaryBackground onPress={onRequest}/>
+                return <CommonButton buttonText={"Leave review"} primaryText primaryBackground onPress={onLeaveReview}/>
             } return
         } return
     }
