@@ -2,6 +2,7 @@ import React from 'react'
 import { View, Text, Pressable, Image } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import { RootStackParamList } from '../../navigation/rootStackParam'
 import styles from './styles.ios'
@@ -14,6 +15,7 @@ interface ItemOverviewProps {
         itemCondition: string,
         itemQuantity: string,
         donor: string,
+        donorImage: string,
         favouriteCount: number,
 
     }
@@ -33,12 +35,22 @@ const MainCard = (props: ItemOverviewProps) => {
                <Image style={styles.image} source={{ uri: item.image}}></Image> 
             </View>
             <View style={styles.detailContainer}>
-                {/* Title */}
-                <Text style={styles.title} numberOfLines={2}>{item.title} </Text>
-                {/* Item Condition & Quantity*/}
-                <Text>{item.itemCondition} . {item.itemQuantity}</Text>
+                <View style={styles.itemContainer}>
+                    <View style={styles.titleIconContainer}>
+                        {/* Title */}
+                        <Text style={styles.title} numberOfLines={2}>{item.title} </Text>
+                        <AntDesign name='hearto' size={16} style={{paddingVertical: 4}}/>
+                    </View>
+                    <View>
+                        {/* Item Condition & Quantity*/}
+                        <Text>{item.itemCondition} . {item.itemQuantity}</Text>
+                    </View>
+                </View>
                 {/* Donor */}
-                <Text>{item.donor}</Text>
+                <View style={styles.donorContainer}>
+                    <Image source = {{uri : item.donorImage }} style={styles.donorImage}/>
+                    <Text >{item.donor}</Text>
+                </View>
             </View>  
         </Pressable>
     )

@@ -7,7 +7,7 @@ const styles = StyleSheet.create ({
     height: '100%',
   },
   itemContainer: {
-    padding: 8,
+    padding: 0,
     paddingTop: 8,
     height: 422,
     backgroundColor: defaultStyles.color.backgroundLight,

@@ -21,7 +21,6 @@ import { StackNavigationProp } from '@react-navigation/stack'
 type profileScreenProp = StackNavigationProp<RootStackParamList, 'ProfileScreen'>;
 
 const ProfileScreen = () => {
-
     const navigation = useNavigation<profileScreenProp>();
     const onSettings = () => {
         navigation.navigate('SettingScreen')

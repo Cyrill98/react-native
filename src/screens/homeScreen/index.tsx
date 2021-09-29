@@ -11,10 +11,12 @@ import items from '../../data/productDetails'
 
 
 const Homescreen = () => {
+    const user = "@lsyakiru"
+    const userData = items.filter(e => !e.donor.includes(user))
     return (
         <View style={styles.root}>
             <FlatList
-            data= {items}
+            data = {userData}
             renderItem={({item}) => <MainCard item={item}/>}
             numColumns={2}
             showsVerticalScrollIndicator= {false}

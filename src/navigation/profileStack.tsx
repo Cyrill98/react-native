@@ -16,6 +16,7 @@ import ProfileScreen from '../screens/profileScreen';
 import ReviewScreen from '../screens/reviewScreen';
 import SettingScreen from '../screens/settingScreen';
 import SettingsStack from './settingsStack';
+import AnalyticsListedScreen from '../screens/analayticsListedScreen';
 
 type profileScreenProp = StackNavigationProp<RootStackParamList, 'ProfileScreen'>;
 
@@ -46,6 +47,18 @@ const ProfileStack = () => {
                 <Stack.Screen 
                     component={ItemDetailsScreen} 
                     name='ItemDetailsScreen'
+                    options={{
+                        headerShown: false,
+                        title:'',
+                        // header: () => 
+                        //     <Header
+                        //     SearchBar={false}
+                        //     Icon1={ <Ionicons name="chevron-back" size={24} style={{marginLeft: 8}} onPress={onBack}/>}
+                        //     />
+                        }}/>
+                <Stack.Screen 
+                    component={AnalyticsListedScreen} 
+                    name='AnalyticsListedScreen'
                     options={{
                         headerShown: false,
                         title:'',

@@ -62,6 +62,7 @@ const ItemDetails = (props: ItemDetailProp) => {
     const onCancelRequest = () => {
     };
     const onListOfRequestors = () => {
+        navigation.navigate('AnalyticsListedScreen')
     };
     const onMarkAsUnreserved = () => {
     };

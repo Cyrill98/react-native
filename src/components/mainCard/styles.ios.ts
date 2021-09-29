@@ -32,10 +32,33 @@ const styles = StyleSheet.create (
     },
     detailContainer:{
         padding: 10,
+        height: 100,
+        flexDirection: "column",
+        justifyContent: "space-between",
+    },
+    itemContainer: {
+
+    },
+    titleIconContainer: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "flex-start",
+        //backgroundColor: 'green'
     },
     title: {
         fontWeight: "bold",
+        width: 138,
     },
+    donorContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+    },
+    donorImage: {
+        marginRight: 4,
+        height: 20,
+        width: 20,
+        borderRadius: 24,
+    }
 }
 )
 

@@ -7,10 +7,12 @@ import defaultStyle from '../../globalstyles/defaultStyles'
 import ReviewCard from '../reviewCard'
 
 const FirstRoute = () => {
+    const user = "@lsyakiru"
+    const userData = items.filter(x => x.donor.includes(user) || x.taker.includes(user))
     return (
     <View style={{flex: 1}}>
          <FlatList
-                data= {items}
+                data= {userData}
                 renderItem={({item}) => <MainCard item={item}/>}
                 numColumns={2}
                 showsVerticalScrollIndicator= {false}
@@ -21,10 +23,12 @@ const FirstRoute = () => {
 }
 
 const SecondRoute = () => {
+    const user = "@lsyakiru"
+    const userData = items.filter(x => x.donor.includes(user) || x.taker.includes(user))
     return (
     <View style={{flex: 1}}>
          <FlatList
-                data= {items}
+                data= {userData}
                 renderItem={({item}) => <ReviewCard item={item}/>}
                 showsVerticalScrollIndicator= {false}
                 // ListHeaderComponent={<Text style={[textStyles.h3, {color:defaultStyle.color.text, paddingVertical: 16, marginLeft: 24}]}>Your Daily Picks</Text>}
@@ -43,7 +47,7 @@ const renderTabBar = (props) => {
     <TabBar
         {...props}
         indicatorStyle={{backgroundColor: defaultStyle.color.primary}}
-        style={{backgroundColor: defaultStyle.color.backgroundLight, marginBottom: 0}}
+        style={{backgroundColor: defaultStyle.color.backgroundLight, marginBottom: 0, borderTopLeftRadius: 20, borderTopRightRadius: 20}}
         activeColor={defaultStyle.color.text}
         inactiveColor={'gray'}
     />
