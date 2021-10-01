@@ -37,8 +37,13 @@ export default [
         avgRating: 3.2,
         rating: 45,
         followers: 58,
+        followerList: [],
         following: 234,
+        followingList: [],
         listedItems: 5,
         donatedItems: 9,
+        ratings: [
+            
+        ]
     }
 ]

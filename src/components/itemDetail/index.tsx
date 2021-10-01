@@ -6,6 +6,7 @@ import { StackNavigationProp } from '@react-navigation/stack'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import Ionicons from 'react-native-vector-icons/Ionicons'
 
 import { RootStackParamList } from '../../navigation/rootStackParam'
 import styles from '../itemDetail/styles.ios'
@@ -15,6 +16,7 @@ import textStyles from '../../globalstyles/textSyles'
 import CommonButton from '../../components/button'
 import StatusTag from '../statusTag'
 import defaultStyle from '../../globalstyles/defaultStyles'
+import Header from '../header'
 
 interface ItemDetailProp {
     item: {
@@ -26,9 +28,8 @@ interface ItemDetailProp {
         images: string[],
         itemStatus?: string,
         location: string,
-        favouriteCount: number,
-        requestCount: number,
         requestedBy: string[],
+        favouritedBy: string [],
         timeStamp: string,
         itemCondition: string,
         itemQuantity: string,
@@ -44,6 +45,7 @@ interface ItemDetailProp {
         takerJoinedDate: string,
         takerImage: string,
         takerReviewToDonor: string,
+        donorReviewToTaker: string,
     }
 }
 
@@ -55,6 +57,27 @@ const ItemDetails = (props: ItemDetailProp) => {
     const navigation = useNavigation<itemDetailScreenProp>();
     const route = useRoute();
     //console.warn(route.params);
+    const onBack = () => {
+        navigation.goBack();
+    }
+    const onShare = () => {
+
+    }
+    const onReport = () => {
+
+    }
+    const onAnalyticsReserved = () => {
+        navigation.navigate('AnalyticsReservedScreen', {id: itemDetail.id})
+    }
+    const onAnalyticsDonated = () => {
+        navigation.navigate('AnalyticsDonatedScreen', {id: itemDetail.id})
+    }
+    const onEdit = () => {
+        navigation.navigate('EditItemDetailsScreen', {id: itemDetail.id} )
+    }
+    const onDelete = () => {
+
+    }
     const onRequest = () => {
         //console.warn('test')
         navigation.navigate('AddressScreen')
@@ -62,7 +85,7 @@ const ItemDetails = (props: ItemDetailProp) => {
     const onCancelRequest = () => {
     };
     const onListOfRequestors = () => {
-        navigation.navigate('AnalyticsListedScreen')
+        navigation.navigate('AnalyticsListedScreen', {id: itemDetail.id})
     };
     const onMarkAsUnreserved = () => {
     };
@@ -70,6 +93,84 @@ const ItemDetails = (props: ItemDetailProp) => {
     };
     const onLeaveReview = () => {
     };
+
+    const HeaderOption = () => {
+        // Logic
+        // 1. if itemStatus is "Listed", 
+        //         if donor is user, then can tap "list of requestors"
+        //         else if requestedby list includes user, 
+        //              then can tap "Cancel Request" (if user is included in requested by list)
+        //              or can tap "Request" (if not included in the list)
+        // 2. if itemStatus is "In Process",
+        //         if donor is user, then can tap "Mark as Unreserved",
+        //         else if taker is user, then can tap "Item Received"
+        //         else if donor/taker is not user, no button
+        // 3. if itemStatus is "Process Completed",
+        //         if donor/taker is user, then can tap "Leave Review"
+    
+            if (itemDetail.itemStatus == "Listed"){
+                if(itemDetail.donor == user){
+                    return <Header
+                    SearchBar={false}
+                    Icon1={ <Ionicons name="chevron-back" size={24} style={{marginLeft: 0}} onPress={onBack}/>}
+                    Icon2={ <AntDesign name="sharealt" size={24} style={{paddingLeft: 8}} onPress={onShare}/>}
+                    Icon3={ <MaterialIcons name="edit" size={24} style={{paddingLeft: 8}} onPress={onEdit}/> }
+                    Icon4={ <MaterialIcons name="delete-outline" size={24} style={{paddingLeft: 8}} onPress={onDelete}/> }
+                    />
+                    //<CommonButton buttonText={"List of Requestors"} primaryText primaryBackground onPress={onListOfRequestors}/>
+                } { 
+                    if (itemDetail.requestedBy.includes(user)) {
+                        return <Header
+                        SearchBar={false}
+                        Icon1={ <Ionicons name="chevron-back" size={24} style={{marginLeft: 0}} onPress={onBack}/>}
+                        Icon2={ <AntDesign name="sharealt" size={24} style={{paddingLeft: 8}} onPress={onShare}/>}
+                        Icon3={ <MaterialIcons name="report" size={24} style={{paddingLeft: 8}} onPress={onReport}/> }
+                        />
+                        // <CommonButton buttonText={"Cancel Request"} primaryText primaryBackground onPress={onCancelRequest}/>
+                    } {
+                        return <Header
+                        SearchBar={false}
+                        Icon1={ <Ionicons name="chevron-back" size={24} style={{marginLeft: 0}} onPress={onBack}/>}
+                        Icon2={ <AntDesign name="sharealt" size={24} style={{paddingLeft: 8}} onPress={onShare}/>}
+                        Icon3={ <MaterialIcons name="report" size={24} style={{paddingLeft: 8}} onPress={onReport}/> }
+                        />
+                        // <CommonButton buttonText={"Request"} primaryText primaryBackground onPress={onRequest}/> 
+                    }  
+                }
+            } else if (itemDetail.itemStatus == "In Process"){
+                if(itemDetail.donor == user){
+                    return <Header
+                    SearchBar={false}
+                    Icon1={ <Ionicons name="chevron-back" size={24} style={{marginLeft: 0}} onPress={onBack}/>}
+                    Icon2={ <Ionicons name="md-analytics" size={24} style={{paddingLeft: 8}} onPress={onAnalyticsReserved}/> }
+                    Icon3={ <MaterialIcons name="delete-outline" size={24} style={{paddingLeft: 8}} onPress={onDelete}/> }
+                    />
+                    //<CommonButton buttonText={"Mark as Unreserved"} primaryText primaryBackground onPress={onMarkAsUnreserved}/>
+                } else if (itemDetail.taker == user) {
+                    return <Header
+                    SearchBar={false}
+                    Icon1={ <Ionicons name="chevron-back" size={24} style={{marginLeft: 0}} onPress={onBack}/>}
+                    Icon2={ <MaterialIcons name="report" size={24} style={{paddingLeft: 8}} onPress={onReport}/> }
+                    /> 
+                    // <CommonButton buttonText={"Item Received"} primaryText primaryBackground onPress={onItemReceived}/>
+                }     
+            } else if (itemDetail.itemStatus == "Completed"){
+                if(itemDetail.donor == user){
+                    return <Header
+                    SearchBar={false}
+                    Icon1={ <Ionicons name="chevron-back" size={24} style={{marginLeft: 0}} onPress={onBack}/>}
+                    Icon2={ <Ionicons name="md-analytics" size={24} style={{paddingLeft: 8}} onPress={onAnalyticsDonated}/>}
+                    />
+                    // <CommonButton buttonText={"Leave review"} primaryText primaryBackground/>
+                } else if (itemDetail.taker == user) {
+                    return <Header
+                    SearchBar={false}
+                    Icon1={ <Ionicons name="chevron-back" size={24} style={{marginLeft: 0}} onPress={onBack}/>}
+                    />
+                    // <CommonButton buttonText={"Leave review"} primaryText primaryBackground onPress={onLeaveReview}/>
+                } return
+            } return
+        }
 
     const ButtonOption = () => {
     // Logic
@@ -102,10 +203,10 @@ const ItemDetails = (props: ItemDetailProp) => {
                 return <CommonButton buttonText={"Item Received"} primaryText primaryBackground onPress={onItemReceived}/>
             }     
         } else if (itemDetail.itemStatus == "Completed"){
-            if(itemDetail.donor == user){
-                return <CommonButton buttonText={"Leave review"} primaryText primaryBackground/>
-            } else if (itemDetail.taker == user) {
-                return <CommonButton buttonText={"Leave review"} primaryText primaryBackground onPress={onLeaveReview}/>
+            if(itemDetail.donor == user && itemDetail.donorReviewToTaker == ''){
+                return <CommonButton buttonText={"Rate your Taker"} primaryText primaryBackground/>
+            } else if (itemDetail.taker == user && itemDetail.takerReviewToDonor == '') {
+                return <CommonButton buttonText={"Rate your Donor"} primaryText primaryBackground onPress={onLeaveReview}/>
             } return
         } return
     }
@@ -113,9 +214,9 @@ const ItemDetails = (props: ItemDetailProp) => {
     const ItemTag = () => {
         if (itemDetail.itemStatus == "In Process") {
             if (itemDetail.donor == user) {
-                return <StatusTag tagText={"Item Reserved"}/>
+                return <StatusTag isItemDetail tagText={"Item Reserved"}/>
             } else if (itemDetail.taker == user) {
-                return <StatusTag tagText={"Request Accepted"}/>
+                return <StatusTag isItemDetail tagText={"Request Accepted"}/>
             } return
         }
     }
@@ -123,6 +224,7 @@ const ItemDetails = (props: ItemDetailProp) => {
 
     return (
         <ScrollView showsVerticalScrollIndicator={false}>
+            {HeaderOption()}
             {/* Image Carousel */}
             <ImageCarousel images={itemDetail.images}/>
             <View style={styles.container}>
@@ -150,13 +252,13 @@ const ItemDetails = (props: ItemDetailProp) => {
                     {/* Save Count */}
                     <View style={styles.detail}>
                         <AntDesign name='hearto' size={24} />
-                        <Text style={[textStyles.body, {padding: 8}]}>{itemDetail.favouriteCount} saves</Text>   
+                        <Text style={[textStyles.body, {padding: 8}]}>{itemDetail.favouritedBy.length} saves</Text>   
                     </View>
                     
                     {/* Request Count */}
                     <View style={styles.detail}>
                         <MaterialIcons name='emoji-people' size={24} />
-                        <Text style={[textStyles.body, {padding: 8}]}>{itemDetail.requestCount} requests</Text>
+                        <Text style={[textStyles.body, {padding: 8}]}>{itemDetail.requestedBy.length} requests</Text>
                     </View>
                     
                     {/* Upload Time */}
@@ -223,9 +325,9 @@ const ItemDetails = (props: ItemDetailProp) => {
                     </View>
                     
                     {/* Hairline */}
-                    <View style={[styles.hairline, {marginRight: 96, marginBottom: 8, marginTop:8}]}></View>
+                    {/* <View style={[styles.hairline, {marginRight: 96, marginBottom: 8, marginTop:8}]}></View> */}
                     
-                    <View>
+                    {/* <View>
                        <Text style={textStyles.small}>Ratings</Text>
                         <View style={styles.ratingContainer}>
                         {[0,0,0,0,0].map((el, i) =>
@@ -249,12 +351,13 @@ const ItemDetails = (props: ItemDetailProp) => {
                         </View>
                         
                         <Text style={[textStyles.body, {marginTop:8, marginBottom:8}]}>{itemDetail.takerReviewToDonor}</Text> 
+                    </View> */}
+                    <View style={{marginTop: 16}}>
+                        <CommonButton buttonText={"See Profile"} primaryText primaryBackground/>
                     </View>
-                    
-                    <CommonButton buttonText={'See Reviews'} primaryText primaryBackground/>
 
                     {/* Hairline */}
-                    <View style={styles.hairline}></View>
+                    {/* <View style={styles.hairline}></View> */}
                 </View>
             </View>
         </ScrollView>

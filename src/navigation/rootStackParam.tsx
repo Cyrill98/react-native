@@ -22,7 +22,8 @@ export type RootStackParamList = {
     RoadmapScreen: undefined;
     TNCScreen: undefined;
     PrivacyPolicyScreen: undefined;
-    AnalyticsListedScreen: undefined;
-    AnalyticsReservedScreen: undefined;
-    AnalyticsDonatedScreen: undefined;
+    AnalyticsListedScreen: {id: string};
+    AnalyticsReservedScreen: {id: string};
+    AnalyticsDonatedScreen: {id: string};
+    EditItemDetailsScreen: {id: string};
     };

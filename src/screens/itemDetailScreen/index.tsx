@@ -25,12 +25,6 @@ const ItemDetailsScreen = () => {
     return (
         <ScrollView showsVerticalScrollIndicator={false}>
             <View>
-                <Header 
-                    SearchBar={false}
-                    Icon1={ <Ionicons name="chevron-back" size={24} style={{marginLeft: 0}} onPress={onBack}/>}
-                    Icon2={ <AntDesign name="sharealt" size={24} style={{paddingLeft: 8}} onPress={onShare}/>}
-                    Icon3={ <MaterialIcons name="error-outline" size={24} style={{paddingLeft: 8}} onPress={onReport}/> }
-                    />
                 <ItemDetails item={itemDetails[id]}/>
                 {/* <Text style={[textStyles.h3, {marginBottom: 16}]}>Similar Items</Text>
                 <Text style={[textStyles.h3, {marginBottom: 16}]}>Other Items From Donor</Text> */}

@@ -17,6 +17,9 @@ import ReviewScreen from '../screens/reviewScreen';
 import SettingScreen from '../screens/settingScreen';
 import SettingsStack from './settingsStack';
 import AnalyticsListedScreen from '../screens/analayticsListedScreen';
+import AnalyticsReservedScreen from '../screens/analayticsReservedScreen';
+import AnalyticsDonatedScreen from '../screens/analayticsDonatedScreen';
+import EditItemDetailsScreen from '../screens/editItemDetailScreen';
 
 type profileScreenProp = StackNavigationProp<RootStackParamList, 'ProfileScreen'>;
 
@@ -57,8 +60,44 @@ const ProfileStack = () => {
                         //     />
                         }}/>
                 <Stack.Screen 
+                    component={EditItemDetailsScreen} 
+                    name='EditItemDetailsScreen'
+                    options={{
+                        headerShown: false,
+                        title:'',
+                        // header: () => 
+                        //     <Header
+                        //     SearchBar={false}
+                        //     Icon1={ <Ionicons name="chevron-back" size={24} style={{marginLeft: 8}} onPress={onBack}/>}
+                        //     />
+                        }}/>
+                <Stack.Screen 
                     component={AnalyticsListedScreen} 
                     name='AnalyticsListedScreen'
+                    options={{
+                        headerShown: false,
+                        title:'',
+                        // header: () => 
+                        //     <Header
+                        //     SearchBar={false}
+                        //     Icon1={ <Ionicons name="chevron-back" size={24} style={{marginLeft: 8}} onPress={onBack}/>}
+                        //     />
+                        }}/>
+                <Stack.Screen 
+                    component={AnalyticsReservedScreen} 
+                    name='AnalyticsReservedScreen'
+                    options={{
+                        headerShown: false,
+                        title:'',
+                        // header: () => 
+                        //     <Header
+                        //     SearchBar={false}
+                        //     Icon1={ <Ionicons name="chevron-back" size={24} style={{marginLeft: 8}} onPress={onBack}/>}
+                        //     />
+                        }}/>
+                <Stack.Screen 
+                    component={AnalyticsDonatedScreen} 
+                    name='AnalyticsDonatedScreen'
                     options={{
                         headerShown: false,
                         title:'',

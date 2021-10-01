@@ -31,13 +31,13 @@ const styles = StyleSheet.create (
         resizeMode: 'contain',
     },
     detailContainer:{
-        padding: 10,
+        
         height: 100,
         flexDirection: "column",
         justifyContent: "space-between",
     },
     itemContainer: {
-
+        padding: 10,
     },
     titleIconContainer: {
         flexDirection: "row",
@@ -52,6 +52,8 @@ const styles = StyleSheet.create (
     donorContainer: {
         flexDirection: "row",
         alignItems: "center",
+        paddingLeft: 10,
+        paddingBottom: 10,
     },
     donorImage: {
         marginRight: 4,

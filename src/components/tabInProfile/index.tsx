@@ -24,7 +24,7 @@ const FirstRoute = () => {
 
 const SecondRoute = () => {
     const user = "@lsyakiru"
-    const userData = items.filter(x => x.donor.includes(user) || x.taker.includes(user))
+    const userData = items.filter(x => x.itemStatus.includes('Completed')).filter(x => x.donor.includes(user) || x.taker.includes(user)).filter(x => x.donorReviewToTaker !== '')
     return (
     <View style={{flex: 1}}>
          <FlatList

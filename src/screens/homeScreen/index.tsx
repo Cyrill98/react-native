@@ -12,7 +12,7 @@ import items from '../../data/productDetails'
 
 const Homescreen = () => {
     const user = "@lsyakiru"
-    const userData = items.filter(e => !e.donor.includes(user))
+    const userData = items.filter(e => e.itemStatus.includes("Listed")).filter(e => !e.donor.includes(user))
     return (
         <View style={styles.root}>
             <FlatList

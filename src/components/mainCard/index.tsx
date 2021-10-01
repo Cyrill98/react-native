@@ -6,6 +6,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import { RootStackParamList } from '../../navigation/rootStackParam'
 import styles from './styles.ios'
+import StatusTag from '../statusTag';
 
 interface ItemOverviewProps {
     item: {
@@ -14,27 +15,40 @@ interface ItemOverviewProps {
         image: string,
         itemCondition: string,
         itemQuantity: string,
+        itemStatus: string,
         donor: string,
         donorImage: string,
-        favouriteCount: number,
-
+        taker: string,
     }
 }
 
 type homeScreenProp = StackNavigationProp<RootStackParamList, 'HomeScreen'>;
 
 const MainCard = (props: ItemOverviewProps) => {
+    const user = "@lsyakiru"
     const navigation = useNavigation<homeScreenProp>();
     const item = props.item;
     const onPress = () => {
         navigation.navigate('ItemDetailsScreen', {id: item.id});
     };
+
+    const ItemTag = () => {
+        if (item.itemStatus == "In Process") {
+            if (item.donor == user) {
+                return <StatusTag isCard tagText={"Item Reserved"}/>
+            } else if (item.taker == user) {
+                return <StatusTag isCard tagText={"Request Accepted"}/>
+            } return
+        }
+    }
+
     return (
         <Pressable onPress={onPress} style={styles.root}>
             <View style={styles.imageContainer}>
                <Image style={styles.image} source={{ uri: item.image}}></Image> 
             </View>
             <View style={styles.detailContainer}>
+                {ItemTag()}
                 <View style={styles.itemContainer}>
                     <View style={styles.titleIconContainer}>
                         {/* Title */}
