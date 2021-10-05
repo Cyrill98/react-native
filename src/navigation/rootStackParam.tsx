@@ -26,4 +26,5 @@ export type RootStackParamList = {
     AnalyticsReservedScreen: {id: string};
     AnalyticsDonatedScreen: {id: string};
     EditItemDetailsScreen: {id: string};
+    ReviewToDonorScreen: undefined;
     };

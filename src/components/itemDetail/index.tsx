@@ -91,7 +91,11 @@ const ItemDetails = (props: ItemDetailProp) => {
     };
     const onItemReceived = () => {
     };
-    const onLeaveReview = () => {
+    const onLeaveReviewToTaker = () => {
+        
+    };
+    const onLeaveReviewToDonor = () => {
+        navigation.navigate('ReviewToDonorScreen')
     };
 
     const HeaderOption = () => {
@@ -204,9 +208,9 @@ const ItemDetails = (props: ItemDetailProp) => {
             }     
         } else if (itemDetail.itemStatus == "Completed"){
             if(itemDetail.donor == user && itemDetail.donorReviewToTaker == ''){
-                return <CommonButton buttonText={"Rate your Taker"} primaryText primaryBackground/>
+                return <CommonButton buttonText={"Rate your Taker"} primaryText primaryBackground onPress={onLeaveReviewToTaker}/>
             } else if (itemDetail.taker == user && itemDetail.takerReviewToDonor == '') {
-                return <CommonButton buttonText={"Rate your Donor"} primaryText primaryBackground onPress={onLeaveReview}/>
+                return <CommonButton buttonText={"Rate your Donor"} primaryText primaryBackground onPress={onLeaveReviewToDonor}/>
             } return
         } return
     }

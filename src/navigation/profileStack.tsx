@@ -20,6 +20,7 @@ import AnalyticsListedScreen from '../screens/analayticsListedScreen';
 import AnalyticsReservedScreen from '../screens/analayticsReservedScreen';
 import AnalyticsDonatedScreen from '../screens/analayticsDonatedScreen';
 import EditItemDetailsScreen from '../screens/editItemDetailScreen';
+import ReviewToDonorScreen from '../screens/reviewToDonorScreen';
 
 type profileScreenProp = StackNavigationProp<RootStackParamList, 'ProfileScreen'>;
 
@@ -98,6 +99,18 @@ const ProfileStack = () => {
                 <Stack.Screen 
                     component={AnalyticsDonatedScreen} 
                     name='AnalyticsDonatedScreen'
+                    options={{
+                        headerShown: false,
+                        title:'',
+                        // header: () => 
+                        //     <Header
+                        //     SearchBar={false}
+                        //     Icon1={ <Ionicons name="chevron-back" size={24} style={{marginLeft: 8}} onPress={onBack}/>}
+                        //     />
+                        }}/>
+                <Stack.Screen 
+                    component={ReviewToDonorScreen} 
+                    name='ReviewToDonorScreen'
                     options={{
                         headerShown: false,
                         title:'',
