@@ -9,9 +9,10 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import Header from '../components/header';
 import Homescreen from '../screens/homeScreen';
 import ItemDetailsScreen from '../screens/itemDetailScreen';
-import AddressScreen from '../screens/addressScreen';
 import FavouriteScreen from '../screens/favouriteScreen';
 import MessageScreen from '../screens/messageScreen';
+import RequestScreen from '../screens/requestScreen';
+import ConfirmRequestScreen from '../screens/confirmRequestScreen';
 
 type homeScreenProp = StackNavigationProp<RootStackParamList, 'HomeScreen'>;
 
@@ -52,8 +53,19 @@ const HomeStack = () => {
                         title:'',
                         }}/>
                 <Stack.Screen 
-                    component={AddressScreen} 
-                    name='AddressScreen'
+                    component={RequestScreen} 
+                    name='RequestScreen'
+                    options={{
+                        headerShown: true,
+                        header: () => 
+                            <Header
+                            SearchBar={false}
+                            Icon1={ <Ionicons name="chevron-back" size={24} style={{marginLeft: 8}} onPress={onBack}/>}
+                            />
+                        }}/>
+                <Stack.Screen 
+                    component={ConfirmRequestScreen} 
+                    name='ConfirmRequestScreen'
                     options={{
                         headerShown: true,
                         header: () => 

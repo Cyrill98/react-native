@@ -1,35 +1,24 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { useNavigation } from '@react-navigation/core'
 import { RootStackParamList } from './rootStackParam';
-import AntDesign from 'react-native-vector-icons/AntDesign'
-import Ionicons from 'react-native-vector-icons/Ionicons'
-
-import Header from '../components/header';
-import Homescreen from '../screens/homeScreen';
 import ItemDetailsScreen from '../screens/itemDetailScreen';
-import AddressScreen from '../screens/addressScreen';
 import FavouriteScreen from '../screens/favouriteScreen';
 import MessageScreen from '../screens/messageScreen';
 import ProfileScreen from '../screens/profileScreen';
 import ReviewScreen from '../screens/reviewScreen';
-import SettingScreen from '../screens/settingScreen';
 import SettingsStack from './settingsStack';
 import AnalyticsListedScreen from '../screens/analayticsListedScreen';
 import AnalyticsReservedScreen from '../screens/analayticsReservedScreen';
 import AnalyticsDonatedScreen from '../screens/analayticsDonatedScreen';
 import EditItemDetailsScreen from '../screens/editItemDetailScreen';
 import ReviewToDonorScreen from '../screens/reviewToDonorScreen';
-
-type profileScreenProp = StackNavigationProp<RootStackParamList, 'ProfileScreen'>;
+import ReviewToTakerScreen from '../screens/reviewToTakerScreen';
+import ConfirmReviewToDonorScreen from '../screens/confirmReviewToDonorScreen';
+import ConfirmReviewToTakerScreen from '../screens/confirmReviewToTakerScreen';
 
 const ProfileStack = () => {
     const Stack = createStackNavigator<RootStackParamList>();
-    const navigation = useNavigation<profileScreenProp>();
-    const onBack = () => {
-        navigation.goBack();
-    }
 
     return (
             <Stack.Navigator 
@@ -111,6 +100,42 @@ const ProfileStack = () => {
                 <Stack.Screen 
                     component={ReviewToDonorScreen} 
                     name='ReviewToDonorScreen'
+                    options={{
+                        headerShown: false,
+                        title:'',
+                        // header: () => 
+                        //     <Header
+                        //     SearchBar={false}
+                        //     Icon1={ <Ionicons name="chevron-back" size={24} style={{marginLeft: 8}} onPress={onBack}/>}
+                        //     />
+                        }}/>
+                <Stack.Screen 
+                    component={ReviewToTakerScreen} 
+                    name='ReviewToTakerScreen'
+                    options={{
+                        headerShown: false,
+                        title:'',
+                        // header: () => 
+                        //     <Header
+                        //     SearchBar={false}
+                        //     Icon1={ <Ionicons name="chevron-back" size={24} style={{marginLeft: 8}} onPress={onBack}/>}
+                        //     />
+                        }}/>
+                <Stack.Screen 
+                    component={ConfirmReviewToDonorScreen} 
+                    name='ConfirmReviewToDonorScreen'
+                    options={{
+                        headerShown: false,
+                        title:'',
+                        // header: () => 
+                        //     <Header
+                        //     SearchBar={false}
+                        //     Icon1={ <Ionicons name="chevron-back" size={24} style={{marginLeft: 8}} onPress={onBack}/>}
+                        //     />
+                        }}/>
+                <Stack.Screen 
+                    component={ConfirmReviewToTakerScreen} 
+                    name='ConfirmReviewToTakerScreen'
                     options={{
                         headerShown: false,
                         title:'',

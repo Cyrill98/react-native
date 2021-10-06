@@ -80,7 +80,7 @@ const ItemDetails = (props: ItemDetailProp) => {
     }
     const onRequest = () => {
         //console.warn('test')
-        navigation.navigate('AddressScreen')
+        navigation.navigate('RequestScreen')
     };
     const onCancelRequest = () => {
     };
@@ -92,7 +92,7 @@ const ItemDetails = (props: ItemDetailProp) => {
     const onItemReceived = () => {
     };
     const onLeaveReviewToTaker = () => {
-        
+        navigation.navigate('ReviewToTakerScreen')
     };
     const onLeaveReviewToDonor = () => {
         navigation.navigate('ReviewToDonorScreen')

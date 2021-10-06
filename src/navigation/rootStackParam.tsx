@@ -2,6 +2,10 @@ export type RootStackParamList = {
     HomeScreen: undefined;
     ItemDetailsScreen: {id: string};
     AddressScreen: undefined;
+    UploadScreen: undefined;
+    ConfirmUploadScreen: undefined;
+    RequestScreen: undefined;
+    ConfirmRequestScreen: undefined;
     FavouriteScreen: undefined;
     MessageScreen: undefined;
     ReviewScreen: {id: string};
@@ -27,4 +31,7 @@ export type RootStackParamList = {
     AnalyticsDonatedScreen: {id: string};
     EditItemDetailsScreen: {id: string};
     ReviewToDonorScreen: undefined;
-    };
+    ReviewToTakerScreen: undefined;
+    ConfirmReviewToDonorScreen: undefined;
+    ConfirmReviewToTakerScreen: undefined;
+};

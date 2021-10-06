@@ -8,6 +8,7 @@ import defaultStyle from '../globalstyles/defaultStyles';
 import HomeStack from './homeStack';
 import UploadScreen from '../screens/uploadScreen';
 import ProfileStack from './profileStack';
+import UploadStack from './uploadStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -22,7 +23,7 @@ const BottomTabNav = () => {
                     }} >
                 <Tab.Screen 
                     component={HomeStack} 
-                    name='Home' 
+                    name='HomeStack' 
                     options={{
                         tabBarIcon: (({color}) => 
                             <Entypo 
@@ -32,8 +33,8 @@ const BottomTabNav = () => {
                         ),
                     }}/>
                 <Tab.Screen 
-                    component={UploadScreen} 
-                    name='Give' 
+                    component={UploadStack} 
+                    name='UploadStack' 
                     options={{
                         tabBarIcon: (({color}) => 
                             <Ionicons 
@@ -44,7 +45,7 @@ const BottomTabNav = () => {
                     }}/>
                 <Tab.Screen 
                     component={ProfileStack} 
-                    name='Profile' 
+                    name='ProfileStack' 
                     options={{
                         tabBarIcon: (({color}) => 
                             <Entypo 

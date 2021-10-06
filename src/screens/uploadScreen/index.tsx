@@ -10,6 +10,12 @@ import styles from '../uploadScreen/styles.ios'
 import DropdownPicker from '../../components/dropdownPicker'
 import Categories from '../../data/categories'
 import OptionButton from '../../components/segmentedControls'
+import CommonButton from '../../components/button'
+import { StackNavigationProp } from '@react-navigation/stack'
+import { RootStackParamList } from '../../navigation/rootStackParam'
+import { useNavigation } from '@react-navigation/core'
+
+type uploadScreenProp = StackNavigationProp<RootStackParamList>
 
 const UploadScreen = () => {
     const onPictureChange = (image: ImageOrVideo) => {
@@ -18,6 +24,11 @@ const UploadScreen = () => {
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
     const options = ["Option 1", "Option 2"]
+
+    const navigation = useNavigation<uploadScreenProp>();
+    const onPublish = () => {
+        navigation.navigate('ConfirmUploadScreen')
+    }
     return (
         <View style={styles.root}>
             <Text style={[textStyles.h3, styles.title]}>List Out an Item</Text>
@@ -60,8 +71,10 @@ const UploadScreen = () => {
                     <OptionButton options={['Single', 'Bulk']}/>
                 </View>
                 <View style={styles.inputContainer}>
-                    <Text style={[textStyles.bold, {marginBottom: 8}]}>Logistics</Text>
-                    
+                    <Text style={[textStyles.bold, {marginBottom: 8}]}>Logistics</Text> 
+                </View>
+                <View>
+                    <CommonButton primaryText primaryBackground buttonText="Publish" onPress={onPublish}/>
                 </View>
             </ScrollView>
             

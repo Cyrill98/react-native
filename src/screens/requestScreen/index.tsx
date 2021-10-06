@@ -4,11 +4,17 @@ import { useWindowDimensions } from 'react-native';
 
 import defaultStyle from '../../globalstyles/defaultStyles'
 import textStyles from '../../globalstyles/textSyles'
-import styles from '../addressScreen/styles.ios'
+import styles from './styles.ios'
 import DropdownPicker from '../../components/dropdownPicker'
 import CommonButton from '../../components/button'
+import { useNavigation } from '@react-navigation/core';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../../navigation/rootStackParam';
 
-const AddressScreen = () => {
+type requestScreenProp = StackNavigationProp<RootStackParamList>;
+
+const RequestScreen = () => {
+    const navigate = useNavigation<requestScreenProp>();
     const window = useWindowDimensions();
     const [fullname, setFullname] = useState('');
     const [phonenumber, setPhonenumber] = useState('');
@@ -28,7 +34,7 @@ const AddressScreen = () => {
         if (!fullname) {
             Alert.alert("Please fill in the required fields");
             return;
-        }
+        }navigate.navigate('ConfirmRequestScreen')
     }
 
     const validateAddress = () => {
@@ -135,4 +141,4 @@ const AddressScreen = () => {
     )
 }
 
-export default AddressScreen
+export default RequestScreen
