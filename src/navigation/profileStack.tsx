@@ -1,21 +1,21 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { StackNavigationProp } from '@react-navigation/stack';
+
 import { RootStackParamList } from './rootStackParam';
-import ItemDetailsScreen from '../screens/itemDetailScreen';
-import FavouriteScreen from '../screens/favouriteScreen';
-import MessageScreen from '../screens/messageScreen';
-import ProfileScreen from '../screens/profileScreen';
-import ReviewScreen from '../screens/reviewScreen';
+import ItemDetailsScreen from '../screens/HomeStack/itemDetailScreen';
+import FavouriteScreen from '../screens/ProfileStack/favouriteScreen';
+import MessageScreen from '../screens/ProfileStack/messageScreen';
+import ProfileScreen from '../screens/ProfileStack/profileScreen';
+import ReviewScreen from '../screens/ProfileStack/reviewScreen';
 import SettingsStack from './settingsStack';
-import AnalyticsListedScreen from '../screens/analayticsListedScreen';
-import AnalyticsReservedScreen from '../screens/analayticsReservedScreen';
-import AnalyticsDonatedScreen from '../screens/analayticsDonatedScreen';
-import EditItemDetailsScreen from '../screens/editItemDetailScreen';
-import ReviewToDonorScreen from '../screens/reviewToDonorScreen';
-import ReviewToTakerScreen from '../screens/reviewToTakerScreen';
-import ConfirmReviewToDonorScreen from '../screens/confirmReviewToDonorScreen';
-import ConfirmReviewToTakerScreen from '../screens/confirmReviewToTakerScreen';
+import AnalyticsListedScreen from '../screens/ProfileStack/analayticsListedScreen';
+import AnalyticsReservedScreen from '../screens/ProfileStack/analayticsReservedScreen';
+import AnalyticsDonatedScreen from '../screens/ProfileStack/analayticsDonatedScreen';
+import EditItemDetailsScreen from '../screens/ProfileStack/editItemDetailScreen';
+import ReviewToDonorScreen from '../screens/ReviewStack/reviewToDonorScreen';
+import ReviewToTakerScreen from '../screens/ReviewStack/reviewToTakerScreen';
+import ConfirmReviewToDonorScreen from '../screens/ReviewStack/confirmReviewToDonorScreen';
+import ConfirmReviewToTakerScreen from '../screens/ReviewStack/confirmReviewToTakerScreen';
 
 const ProfileStack = () => {
     const Stack = createStackNavigator<RootStackParamList>();

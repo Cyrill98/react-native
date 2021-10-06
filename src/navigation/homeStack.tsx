@@ -2,17 +2,17 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/core'
-import { RootStackParamList } from './rootStackParam';
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
-import Header from '../components/header';
-import Homescreen from '../screens/homeScreen';
-import ItemDetailsScreen from '../screens/itemDetailScreen';
-import FavouriteScreen from '../screens/favouriteScreen';
-import MessageScreen from '../screens/messageScreen';
-import RequestScreen from '../screens/requestScreen';
-import ConfirmRequestScreen from '../screens/confirmRequestScreen';
+import { RootStackParamList } from './rootStackParam';
+import Header from '../components/organisms/header';
+import Homescreen from '../screens/HomeStack/homeScreen';
+import ItemDetailsScreen from '../screens/HomeStack/itemDetailScreen';
+import FavouriteScreen from '../screens/ProfileStack/favouriteScreen';
+import MessageScreen from '../screens/ProfileStack/messageScreen';
+import RequestScreen from '../screens/HomeStack/requestScreen';
+import ConfirmRequestScreen from '../screens/HomeStack/confirmRequestScreen';
 
 type homeScreenProp = StackNavigationProp<RootStackParamList, 'HomeScreen'>;
 

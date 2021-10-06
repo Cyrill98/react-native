@@ -3,12 +3,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import ProfileScreen from '../screens/profileScreen';
-import defaultStyle from '../globalstyles/defaultStyles';
 import HomeStack from './homeStack';
-import UploadScreen from '../screens/uploadScreen';
 import ProfileStack from './profileStack';
 import UploadStack from './uploadStack';
+import color from '../constants/color';
 
 const Tab = createBottomTabNavigator();
 
@@ -18,8 +16,8 @@ const BottomTabNav = () => {
                 screenOptions={{
                     headerShown: false, 
                     tabBarShowLabel: false,
-                    tabBarInactiveTintColor: defaultStyle.color.secondary,
-                    tabBarActiveTintColor: defaultStyle.color.primary,
+                    tabBarInactiveTintColor: color.secondary,
+                    tabBarActiveTintColor: color.primary,
                     }} >
                 <Tab.Screen 
                     component={HomeStack} 

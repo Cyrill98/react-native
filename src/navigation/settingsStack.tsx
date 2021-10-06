@@ -1,23 +1,23 @@
+import React from 'react'
 import { useNavigation } from '@react-navigation/core';
 import { createStackNavigator } from '@react-navigation/stack'
-import React from 'react'
-import { View, Text } from 'react-native'
-import AboutScreen from '../screens/aboutScreen';
-import ChangePasswordScreen from '../screens/changePasswordScreen';
-import CommunityRulesScreen from '../screens/communityRulesScreen';
-import ContactUsScreen from '../screens/contactUsScreen';
-import EditAddressScreen from '../screens/editAddressScreen';
-import EditProfileScreen from '../screens/editProfileScreen';
-import FAQScreen from '../screens/faqScreen';
-import HelpCentreScreen from '../screens/helpCentreScreen';
-import NotificationSettingsScreen from '../screens/notificationSettingsScreen';
-import TNCScreen from '../screens/tncScreen';
-import PrivacySettingsScreen from '../screens/privacySettingsScreen';
-import RoadmapScreen from '../screens/roadmapScreen';
-import SettingScreen from '../screens/settingScreen';
-import TipsScreen from '../screens/tipsScreen';
-import PrivacyPolicyScreen from '../screens/privacyPolicyScreen';
-import VerificationScreen from '../screens/verificationScreen';
+
+import AboutScreen from '../screens/SettingsStack/aboutScreen';
+import ChangePasswordScreen from '../screens/SettingsStack/changePasswordScreen';
+import CommunityRulesScreen from '../screens/SettingsStack/communityRulesScreen';
+import ContactUsScreen from '../screens/SettingsStack/contactUsScreen';
+import EditAddressScreen from '../screens/SettingsStack/editAddressScreen';
+import EditProfileScreen from '../screens/SettingsStack/editProfileScreen';
+import FAQScreen from '../screens/SettingsStack/faqScreen';
+import HelpCentreScreen from '../screens/SettingsStack/helpCentreScreen';
+import NotificationSettingsScreen from '../screens/SettingsStack/notificationSettingsScreen';
+import TNCScreen from '../screens/SettingsStack/tncScreen';
+import PrivacySettingsScreen from '../screens/SettingsStack/privacySettingsScreen';
+import RoadmapScreen from '../screens/SettingsStack/roadmapScreen';
+import SettingScreen from '../screens/SettingsStack/settingScreen';
+import TipsScreen from '../screens/SettingsStack/tipsScreen';
+import PrivacyPolicyScreen from '../screens/SettingsStack/privacyPolicyScreen';
+import VerificationScreen from '../screens/SettingsStack/verificationScreen';
 
 
 const SettingsStack = () => {

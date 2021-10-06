@@ -1,8 +1,9 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
+
 import { RootStackParamList } from './rootStackParam';
-import UploadScreen from '../screens/uploadScreen';
-import ConfirmUploadScreen from '../screens/confirmListingScreen';
+import UploadScreen from '../screens/UploadStack/uploadScreen';
+import ConfirmUploadScreen from '../screens/UploadStack/confirmListingScreen';
 
 const UploadStack = () => {
     const Stack = createStackNavigator<RootStackParamList>();

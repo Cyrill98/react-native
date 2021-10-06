@@ -20,13 +20,13 @@
  } from 'react-native/Libraries/NewAppScreen';
  import Router from './src/navigation';
  import 'react-native-gesture-handler';
- import defaultStyle from './src/globalstyles/defaultStyles';
+ import color from './src/constants/color';
  
  const App = () => {
    const isDarkMode = useColorScheme() === 'dark';
  
    const backgroundStyle = {
-     backgroundColor: isDarkMode ? Colors.darker : defaultStyle.color.backgroundLight,
+     backgroundColor: isDarkMode ? Colors.darker : color.backgroundLight,
      flex: 1,
    };
  

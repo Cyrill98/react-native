@@ -3,8 +3,8 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 
 import BottomTabNav from './bottomTabNav';
-import FavouriteScreen from '../screens/favouriteScreen';
-import MessageScreen from '../screens/messageScreen';
+import FavouriteScreen from '../screens/ProfileStack/favouriteScreen';
+import MessageScreen from '../screens/ProfileStack/messageScreen';
 
 const Stack = createStackNavigator();
 
