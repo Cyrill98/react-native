@@ -1,5 +1,5 @@
-import React from 'react'
-import { View, Text, ScrollView, Image } from 'react-native'
+import React, {useRef, useState} from 'react'
+import { View, Text, ScrollView, Image, Modal } from 'react-native'
 import { useRoute } from '@react-navigation/native'
 import { useNavigation } from '@react-navigation/core'
 import { StackNavigationProp } from '@react-navigation/stack'
@@ -15,6 +15,7 @@ import StatusTag from '../../atoms/statusTag'
 import Header from '../header'
 import styles from './styles'
 import typography from '../../../constants/typography'
+import PopupModal from '../../molecules/popupModal'
 
 interface ItemDetailProp {
     item: {
@@ -50,8 +51,12 @@ interface ItemDetailProp {
 type itemDetailScreenProp = StackNavigationProp<RootStackParamList, 'ItemDetailsScreen'>;
 
 const ItemDetails = (props: ItemDetailProp) => {
+    const [cancelRequestPopup, setCancelRequestPopup] = useState(false)
+    const [markAsUnreservedPopup, setMarkAsUnreservedPopup] = useState(false)
+    const [deletePopup, setDeletePopup] = useState(false)
     const itemDetail = props.item;
     const user = "@lsyakiru"
+
     const navigation = useNavigation<itemDetailScreenProp>();
     const route = useRoute();
     //console.warn(route.params);
@@ -74,18 +79,27 @@ const ItemDetails = (props: ItemDetailProp) => {
         navigation.navigate('EditItemDetailsScreen', {id: itemDetail.id} )
     }
     const onDelete = () => {
-
+        setDeletePopup(true)
+    }
+    const onConfirmDelete = () => {
+        setDeletePopup(true)
     }
     const onRequest = () => {
         //console.warn('test')
         navigation.navigate('RequestScreen')
     };
     const onCancelRequest = () => {
+        setCancelRequestPopup(true)
+    };
+    const onConfirmCancelRequest = () => {
     };
     const onListOfRequestors = () => {
         navigation.navigate('AnalyticsListedScreen', {id: itemDetail.id})
     };
     const onMarkAsUnreserved = () => {
+        setMarkAsUnreservedPopup(true)
+    };
+    const onConfirmMarkAsUnreserved = () => {
     };
     const onItemReceived = () => {
     };
@@ -225,7 +239,8 @@ const ItemDetails = (props: ItemDetailProp) => {
 
 
     return (
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={{flex: 1}}>
+        <ScrollView showsVerticalScrollIndicator={false} style={{flex: 1}}>
             {HeaderOption()}
             {/* Image Carousel */}
             <ImageCarousel images={itemDetail.images}/>
@@ -363,6 +378,25 @@ const ItemDetails = (props: ItemDetailProp) => {
                 </View>
             </View>
         </ScrollView>
+        <PopupModal 
+            modalSubtitle="Are you sure you want to cancel the request you sent to this donor?"
+            isVisible={cancelRequestPopup}
+            button1={ <CommonButton primaryText primaryBackground buttonText="Yes. I am sure." onPress={onConfirmCancelRequest}/> }
+            button2={ <CommonButton primaryText={false} primaryBackground={false} buttonText="No. Please Cancel." onPress={() => setCancelRequestPopup(false)}/> }
+            />
+        <PopupModal 
+            modalSubtitle="Are you sure you want to mark this listing as unreserved? The requestor you accepted will be notified they are not selected anymore."
+            isVisible={markAsUnreservedPopup}
+            button1={ <CommonButton primaryText primaryBackground buttonText="Yes. I am sure." onPress={onConfirmMarkAsUnreserved}/> }
+            button2={ <CommonButton primaryText={false} primaryBackground={false} buttonText="No. Please Cancel." onPress={() => setMarkAsUnreservedPopup(false)}/> }
+            />
+        <PopupModal 
+            modalSubtitle="Are you sure you want to delete this listing? Your requestors will be notified that this is listing is no longer available."
+            isVisible={deletePopup}
+            button1={ <CommonButton primaryText primaryBackground buttonText="Yes. I am sure." onPress={onConfirmDelete}/> }
+            button2={ <CommonButton primaryText={false} primaryBackground={false} buttonText="No. Please Cancel." onPress={() => setDeletePopup(false)}/> }
+            />
+        </View>
     )
 }
 

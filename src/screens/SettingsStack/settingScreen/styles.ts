@@ -5,7 +5,6 @@ import color from "../../../constants/color";
 const styles = StyleSheet.create ({
     root: {
         backgroundColor: color.backgroundLight,
-        paddingBottom: 56,
     },
     container: {
         padding: 24,

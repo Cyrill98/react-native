@@ -1,5 +1,6 @@
-import React from 'react'
-import { View, ScrollView, Text, Pressable, Linking, Alert} from 'react-native'
+import React, { useRef, useState } from 'react'
+import { View, ScrollView, Text, Pressable, Linking, Alert } from 'react-native'
+import  Animated  from 'react-native-reanimated'
 import { useNavigation } from '@react-navigation/core'
 import { StackNavigationProp } from '@react-navigation/stack'
 import Ionicons from 'react-native-vector-icons/Ionicons'
@@ -10,12 +11,16 @@ import Header from '../../../components/organisms/header'
 import styles from './styles'
 import typography from '../../../constants/typography'
 import color from '../../../constants/color'
+import BottomOption from '../../../components/molecules/bottomSheet'
+import PopupModal from '../../../components/molecules/popupModal'
 
 type settingScreenProp = StackNavigationProp<RootStackParamList>;
 
 const SettingScreen = () => {
-    const navigation = useNavigation<settingScreenProp>();
+    // const sheetRef = useRef(null);
+    const [logoutPopup, setLogoutPopup] = useState(false)
 
+    const navigation = useNavigation<settingScreenProp>();
     const onBack = () => {
         navigation.goBack()
     }
@@ -73,11 +78,17 @@ const SettingScreen = () => {
         })
     }
     const onLogout = () => {
-        
+        // sheetRef.current.snapTo(0)
+        setLogoutPopup(true)
+    }
+    const onConfirmLogout = () => {
     }
 
+    // const fall = new Animated.Value(1)
+
     return (
-        <ScrollView style={styles.root}>
+        <View style={styles.root}>
+        <ScrollView>
             <Header 
                 SearchBar={false}
                 Icon1={ <Ionicons name="chevron-back" size={24} style={{marginLeft: 0}} onPress={onBack}/>}/>
@@ -141,10 +152,36 @@ const SettingScreen = () => {
                     </Pressable>  
                 </View>
                 <CommonButton buttonText={"Logout"} primaryBackground primaryText onPress={onLogout}/>
-                
-            </View>
-                   
+            </View>        
         </ScrollView>
+        <PopupModal 
+            modalSubtitle="You will be logged out from the application. Are you sure?"
+            isVisible={logoutPopup}
+            button1={ <CommonButton primaryText primaryBackground buttonText="Yes. I am sure." onPress={onConfirmLogout}/> }
+            button2={ <CommonButton primaryText={false} primaryBackground={false} buttonText="No. Please Cancel." onPress={() => setLogoutPopup(false)}/> }
+            />
+        {/* <BottomOption 
+        ref={sheetRef}
+        callBackNode={fall}
+        panelTitle="Logout?" 
+        panelSubtitle="You will be logged out from the application. Are you sure?"
+        snapPoints={['33%', '0', '-1%']}
+        button1={
+            <CommonButton 
+                primaryText 
+                primaryBackground 
+                buttonText="Yes. I am sure."
+                onPress={onConfirmLogout}
+                />}
+        button2={
+            <CommonButton 
+                primaryText={false}
+                primaryBackground={false}
+                buttonText="No. Please cancel."
+                onPress={()=> sheetRef.current.snapTo(2)}
+                />}
+        />   */}
+        </View>  
     )
 }
 

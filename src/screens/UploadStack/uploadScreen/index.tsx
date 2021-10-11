@@ -75,7 +75,6 @@ const UploadScreen = () => {
                     <CommonButton primaryText primaryBackground buttonText="Publish" onPress={onPublish}/>
                 </View>
             </ScrollView>
-            
         </View>
     )
 }
