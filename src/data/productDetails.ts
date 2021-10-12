@@ -26,7 +26,7 @@ export default [
   deliveryPrice: "West Malaysia",
 
   // requestCount: 23,
-  requestedBy: ["@shahjali", "@zombuji", "@miladahlia", "@jmlakovich", "@jmulaney"],
+  requestedBy: ["@shahjali", "@zombuji", "@miladahlia", "@jmlakovich", "@jmulaney", "", ""],
   // favouriteCount: 12,
   favouritedBy: ["@shahjali", "@zombuji", "@miladahlia", "@jmlakovich", "@jmulaney"],
   shareCount: 56,

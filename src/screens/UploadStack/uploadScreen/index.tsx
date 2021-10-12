@@ -21,7 +21,7 @@ const UploadScreen = () => {
     }
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
-    const options = ["Option 1", "Option 2"]
+    const [quantity, setQuantity] = useState("")
 
     const navigation = useNavigation<uploadScreenProp>();
     const onPublish = () => {
@@ -67,6 +67,13 @@ const UploadScreen = () => {
                 <View style={styles.inputContainer}>
                     <Text style={[typography.bold, {marginBottom: 8}]}>Quantity</Text>
                     <OptionButton options={['Single', 'Bulk']}/>
+                    {<TextInput 
+                        style={[styles.inputTitle]} 
+                        placeholder={"If bulk, how many items are in the bulk?"}
+                        value={quantity}
+                        onChangeText={setQuantity}
+                        />
+                    }
                 </View>
                 <View style={styles.inputContainer}>
                     <Text style={[typography.bold, {marginBottom: 8}]}>Logistics</Text> 

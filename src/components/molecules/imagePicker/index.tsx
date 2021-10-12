@@ -102,7 +102,7 @@ const ChooseImage = () => {
       showsHorizontalScrollIndicator={false}
       contentContainerStyle={{paddingHorizontal: 24}}
       >
-      <View>
+      <View style={{height: 160}}>
         <TouchableOpacity onPress={() => sheetRef.current.snapTo(0)}>
           <Image
               style={styles.image}

@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { View, Text, TextInput, ScrollView, Alert, KeyboardAvoidingView, Platform } from 'react-native'
 import { useWindowDimensions } from 'react-native';
-import { useNavigation } from '@react-navigation/core';
+import { useNavigation, useRoute } from '@react-navigation/core';
 import { StackNavigationProp } from '@react-navigation/stack';
 
 import { RootStackParamList } from '../../../navigation/rootStackParam';
@@ -15,34 +15,81 @@ type requestScreenProp = StackNavigationProp<RootStackParamList>;
 
 const RequestScreen = () => {
     const navigate = useNavigation<requestScreenProp>();
+    const route = useRoute();
+    const { id } = route.params;
     const window = useWindowDimensions();
+
     const [fullname, setFullname] = useState('');
     const [phonenumber, setPhonenumber] = useState('');
-    
-    const [ addressline1, setAddressline1 ] = useState('');
-    const [ addressline2, setAddressline2 ] = useState('');
-    const [addressError, setaddressError] = useState('Invalid Address');
-
+    const [phoneNumberError, setPhoneNumberError] = useState('');
+    const [ addressLine1, setAddressLine1 ] = useState('');
+    const [ addressLine1Error, setAddressLine1Error] = useState('');
+    const [ addressLine2, setAddressLine2 ] = useState('');
+    const [ addressLine2Error, setAddressLine2Error] = useState('');
+    const [ postcode, setPostcode] = useState('');
+    const [ postcodeError, setPostcodeError] = useState('')
     const [ city, setCity ] = useState('');
+    const [ cityError, setCityError ] = useState('');
     const [ state, setState ] = useState('');
+    const [ stateError, setStateError ] = useState('');
 
     const onConfirm = () => {
-        if (!!addressError) {
+        if (!! phoneNumberError || !!addressLine1Error || !!addressLine2Error || !!postcodeError || !!cityError || !!stateError) {
             Alert.alert('Fix all field with errors before submitting')
             return;
         }
-        if (!fullname) {
-            Alert.alert("Please fill in the required fields");
+        if (!fullname || !phonenumber || !addressLine1 || !addressLine2 || !postcode || !city || !state) {
+            Alert.alert("Please fill in all the fields");
             return;
-        }navigate.navigate('ConfirmRequestScreen')
+        }navigate.navigate('ConfirmRequestScreen', {id: id})
     }
 
-    const validateAddress = () => {
-        if (addressline1.length < 3) {
-            setaddressError('Address is too short')
+    const validatePhoneNumber = () => {
+        if (phonenumber.length < 10) {
+            setPhoneNumberError('Number is too short')
         }
-        if (addressline1.length > 20) {
-            setaddressError('Address is too long')
+        if (phonenumber.length > 11) {
+            setPhoneNumberError('Number is too long')
+        }
+    }
+    const validateAddressLine1 = () => {
+        if (addressLine1.length < 3) {
+            setAddressLine1Error('Address is too short')
+        }
+        if (addressLine1.length > 50) {
+            setAddressLine1Error('Address is too long')
+        }
+    }
+    const validateAddressLine2 = () => {
+        if (addressLine2.length < 3) {
+            setAddressLine2Error('Address is too short')
+        }
+        if (addressLine2.length > 50) {
+            setAddressLine2Error('Address is too long')
+        }
+    }
+    const validatePostcode = () => {
+        if (postcode.length < 5) {
+            setPostcodeError('Postcode is too short')
+        }
+        if (postcode.length > 5) {
+            setPostcodeError('Postcode is too long')
+        }
+    }
+    const validateCity = () => {
+        if (city.length < 5) {
+            setCityError('City is invalid')
+        }
+        if (city.length > 20) {
+            setCityError('City is invalid')
+        }
+    }
+    const validateState = () => {
+        if (state.length < 5) {
+            setStateError('State is invalid')
+        }
+        if (state.length > 20) {
+            setStateError('State is invalid')
         }
     }
 
@@ -59,7 +106,7 @@ const RequestScreen = () => {
                 </View>
                 <Text style={[typography.subtitle, {color:color.text, paddingTop: 8}]}>Pickup</Text>
                 <View style={styles.dropdown}>
-                    <DropdownPicker defaultText={"Choose your time slot"} options={["Anytime"]}/>
+                    {<DropdownPicker defaultText={"Choose your time slot"} options={["Anytime"]}/>}
                 </View>
                 <Text style={[typography.subtitle, {color:color.text, paddingTop: 8}]}>Delivery</Text>
                 <View style={styles.dropdown}>
@@ -80,47 +127,78 @@ const RequestScreen = () => {
                     <Text style={typography.bold}>Phone Number</Text>
                 <TextInput 
                     style={styles.input} 
-                    placeholder={"Phone Number"}
+                    placeholder={"eg. 0123456789"}
                     value={phonenumber}
-                    onChangeText={setPhonenumber}
+                    onChangeText={(text) => {
+                        setPhonenumber(text)
+                        setPhoneNumberError('')
+                    }}
+                    onEndEditing={validatePhoneNumber}
                     keyboardType={'number-pad'}
                     /> 
+                    {!!phoneNumberError && <Text style={styles.errorLabel}>{phoneNumberError}</Text>}
                 </View>
                 {/* Address line 1 */}
                 <View style={styles.inputContainer}>
                     <Text style={typography.bold}>Address Line 1</Text>
                 <TextInput 
                     style={styles.input} 
-                    placeholder={"Address Line 1"}
-                    value={addressline1}
-                    onEndEditing={validateAddress}
+                    placeholder={"Unit, Building"}
+                    value={addressLine1}
+                    onEndEditing={validateAddressLine1}
                     onChangeText={(text) => {
-                        setAddressline1(text);
-                        setaddressError('')
+                        setAddressLine1(text);
+                        setAddressLine1Error('')
                     }
                     }
                     /> 
-                    {!!addressError && <Text style={styles.errorLabel}>{addressError}</Text>}
+                    {!!addressLine1Error && <Text style={styles.errorLabel}>{addressLine1Error}</Text>}
                 </View>
                 {/* Address line 2*/}
                 <View style={styles.inputContainer}>
                     <Text style={typography.bold}>Address Line 2</Text>
                 <TextInput 
                     style={styles.input} 
-                    placeholder={"Address Line 2"}
-                    value={addressline2}
-                    onChangeText={setAddressline2}
-                    /> 
+                    placeholder={"Street, Town"}
+                    onEndEditing={validateAddressLine2}
+                    value={addressLine2}
+                    onChangeText={(text) => {
+                        setAddressLine2(text)
+                        setAddressLine2Error('')
+                    }}
+                    />
+                {!!addressLine2Error && <Text style={styles.errorLabel}>{addressLine2Error}</Text>}
+                </View>
+                {/* Address postcode*/}
+                <View style={styles.inputContainer}>
+                    <Text style={typography.bold}>Postcode</Text>
+                <TextInput 
+                    style={styles.input} 
+                    placeholder={"Postcode"}
+                    value={postcode}
+                    onEndEditing={validatePostcode}
+                    onChangeText={(text) => {
+                        setPostcode(text)
+                        setPostcodeError('')
+                    }}
+                    keyboardType={'number-pad'}
+                    />
+                    {!!postcodeError && <Text style={styles.errorLabel}>{postcodeError}</Text>} 
                 </View>
                 {/* Address city*/}
                 <View style={styles.inputContainer}>
                     <Text style={typography.bold}>City</Text>
                 <TextInput 
                     style={styles.input} 
-                    placeholder={"Address Line 1"}
+                    placeholder={"City"}
                     value={city}
-                    onChangeText={setCity}
+                    // onEndEditing={validateCity}
+                    onChangeText={(text) => {
+                        setCity(text)
+                        setCityError('')
+                    }}
                     /> 
+                    {!!cityError && <Text style={styles.errorLabel}>{cityError}</Text>} 
                 </View>
                 {/* Address state  */}
                 <View style={styles.inputContainer}>
@@ -129,8 +207,13 @@ const RequestScreen = () => {
                     style={styles.input} 
                     placeholder={"State"}
                     value={state}
-                    onChangeText={setState}
+                    // onEndEditing={validateState}
+                    onChangeText={(text) => {
+                        setState(text)
+                        setStateError('')
+                    }}
                     /> 
+                    {!!stateError && <Text style={styles.errorLabel}>{stateError}</Text>} 
                 </View>
                 <View style={styles.buttonContainer}>
                     <CommonButton buttonText={"Confirm"} primaryBackground primaryText onPress={onConfirm}/>

@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react'
-import { View, Text, ScrollView, Image, Modal } from 'react-native'
+import { View, Text, ScrollView, Image, Share, Alert } from 'react-native'
 import { useRoute } from '@react-navigation/native'
 import { useNavigation } from '@react-navigation/core'
 import { StackNavigationProp } from '@react-navigation/stack'
@@ -12,10 +12,10 @@ import { RootStackParamList } from '../../../navigation/rootStackParam'
 import ImageCarousel from '../../atoms/imageCarousel'
 import CommonButton from '../../atoms/button'
 import StatusTag from '../../atoms/statusTag'
+import PopupModal from '../../molecules/popupModal'
 import Header from '../header'
 import styles from './styles'
 import typography from '../../../constants/typography'
-import PopupModal from '../../molecules/popupModal'
 
 interface ItemDetailProp {
     item: {
@@ -53,6 +53,7 @@ type itemDetailScreenProp = StackNavigationProp<RootStackParamList, 'ItemDetails
 const ItemDetails = (props: ItemDetailProp) => {
     const [cancelRequestPopup, setCancelRequestPopup] = useState(false)
     const [markAsUnreservedPopup, setMarkAsUnreservedPopup] = useState(false)
+    const [itemReceivedPopup, setItemReceivedPopup] = useState(false)
     const [deletePopup, setDeletePopup] = useState(false)
     const itemDetail = props.item;
     const user = "@lsyakiru"
@@ -63,8 +64,25 @@ const ItemDetails = (props: ItemDetailProp) => {
     const onBack = () => {
         navigation.goBack();
     }
-    const onShare = () => {
+    const onShare = async () => {
+        try {
+            const result = await Share.share({
+                title: "Free Items on Sadaqamedia",
+                url: 'www.sadaqamedia.my',
+                message: "Check out this item listed on Sadaqamedia. If you are interested, it's free. Just sign up and start requesting pre-loved items now."
+            });
+            if (result.action === Share.sharedAction){
+                if(result.activityType){
 
+                } else {
+
+                } 
+            } else if (result.action === Share.dismissedAction) {
+
+                }
+            } catch (error) {
+                Alert.alert(error.message)
+            };
     }
     const onReport = () => {
 
@@ -86,7 +104,7 @@ const ItemDetails = (props: ItemDetailProp) => {
     }
     const onRequest = () => {
         //console.warn('test')
-        navigation.navigate('RequestScreen')
+        navigation.navigate('RequestScreen', {id: itemDetail.id})
     };
     const onCancelRequest = () => {
         setCancelRequestPopup(true)
@@ -102,6 +120,9 @@ const ItemDetails = (props: ItemDetailProp) => {
     const onConfirmMarkAsUnreserved = () => {
     };
     const onItemReceived = () => {
+        setItemReceivedPopup(true)
+    };
+    const onConfirmItemReceived = () => {
     };
     const onLeaveReviewToTaker = () => {
         navigation.navigate('ReviewToTakerScreen')
@@ -264,7 +285,7 @@ const ItemDetails = (props: ItemDetailProp) => {
                             {/* Donor */}
                             <Text style={typography.extrasmall}>by {itemDetail.donor}</Text>
                         </View>
-                        <AntDesign name='hearto' size={24} />
+                        {!itemDetail.donor.includes(user) && <AntDesign name='hearto' size={24} />}
                     </View>
                     {/* Save Count */}
                     <View style={styles.detail}>
@@ -396,6 +417,13 @@ const ItemDetails = (props: ItemDetailProp) => {
             button1={ <CommonButton primaryText primaryBackground buttonText="Yes. I am sure." onPress={onConfirmDelete}/> }
             button2={ <CommonButton primaryText={false} primaryBackground={false} buttonText="No. Please Cancel." onPress={() => setDeletePopup(false)}/> }
             />
+        <PopupModal 
+            modalSubtitle="Are you sure you want to delete this listing? Your requestors will be notified that this is listing is no longer available."
+            isVisible={itemReceivedPopup}
+            button1={ <CommonButton primaryText primaryBackground buttonText="Yes. I am sure." onPress={onConfirmItemReceived}/> }
+            button2={ <CommonButton primaryText={false} primaryBackground={false} buttonText="No. Please Cancel." onPress={() => setItemReceivedPopup(false)}/> }
+            />
+       
         </View>
     )
 }

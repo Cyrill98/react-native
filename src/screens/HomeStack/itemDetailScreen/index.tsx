@@ -10,7 +10,7 @@ const ItemDetailsScreen = () => {
     const {id} = route.params;
 
     return (
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView showsVerticalScrollIndicator={false} bounces={false}>
             <View>
                 <ItemDetails item={items[id]}/>
                 {/* <Text style={[textStyles.h3, {marginBottom: 16}]}>Similar Items</Text>

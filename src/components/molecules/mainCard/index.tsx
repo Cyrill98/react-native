@@ -53,7 +53,7 @@ const MainCard = (props: ItemOverviewProps) => {
                     <View style={styles.titleIconContainer}>
                         {/* Title */}
                         <Text style={styles.title} numberOfLines={2}>{item.title} </Text>
-                        <AntDesign name='hearto' size={16} style={{paddingVertical: 4}}/>
+                        {!item.donor.includes(user) && <AntDesign name='hearto' size={16} style={{paddingVertical: 4}}/>}
                     </View>
                     <View>
                         {/* Item Condition & Quantity*/}

@@ -2,6 +2,7 @@ import React from 'react'
 import { View } from 'react-native'
 import SelectDropdown from 'react-native-select-dropdown'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import color from '../../../constants/color'
 
 import styles from './styles'
 
@@ -25,7 +26,7 @@ const DropdownPicker = (props: DropdownProp) => {
                     buttonTextStyle={styles.dropdownBtnTxtStyle}
                     renderDropdownIcon={() => {
                       return (
-                        <FontAwesome name="chevron-down" color={"black"} size={18} />
+                        <FontAwesome name="chevron-down" color={color.subtleText} size={16} />
                       );
                     }}
                     dropdownIconPosition={"right"}

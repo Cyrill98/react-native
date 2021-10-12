@@ -4,8 +4,8 @@ export type RootStackParamList = {
     AddressScreen: undefined;
     UploadScreen: undefined;
     ConfirmUploadScreen: undefined;
-    RequestScreen: undefined;
-    ConfirmRequestScreen: undefined;
+    RequestScreen: {id: string};
+    ConfirmRequestScreen: {id: string};
     FavouriteScreen: undefined;
     MessageScreen: undefined;
     ReviewScreen: {id: string};
