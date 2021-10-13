@@ -33,8 +33,8 @@ const ProfileScreen = () => {
                 containerStyle={{backgroundColor: color.backgroundOverlay}}
                 SearchBar={false}
                 Icon2={ <Ionicons name="settings-outline" size={24} style={{marginLeft: 0, color: color.altText}} onPress={onSettings}/>}
-                Icon3={ <AntDesign name="hearto" size={24} style={{paddingLeft: 8, color: color.altText}} onPress={onFavourite}/>}
-                Icon4={ <AntDesign name="message1" size={24} style={{paddingLeft: 8, color: color.altText}} onPress={onMessage}/> }
+                // Icon3={ <AntDesign name="hearto" size={24} style={{paddingLeft: 8, color: color.altText}} onPress={onFavourite}/>}
+                // Icon4={ <AntDesign name="message1" size={24} style={{paddingLeft: 8, color: color.altText}} onPress={onMessage}/> }
                 />
             <ProfileCard profile={Profile[0]}/>
             <View style={styles.itemContainer}>

@@ -45,6 +45,11 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.1,
         shadowRadius: 4,
     },
+    switchContainer: {
+        flexDirection: 'row', 
+        justifyContent: 'space-between',
+        alignItems: "center",
+    }
 })
 
 export default styles

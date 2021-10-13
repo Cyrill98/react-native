@@ -33,7 +33,7 @@ const ProfileCard = (props: ProfileDetailProp) => {
                 <View style={styles.profileContainer}>
                     <View>
                         <Image source={{uri : profile.image}} style={styles.profileImage} />
-                        <CommonButton buttonText={'Follow'} primaryBackground={false} primaryText={false} /> 
+                        {/* <CommonButton buttonText={'Follow'} primaryBackground={false} primaryText={false} />  */}
                     </View>
                     <View style={styles.profileDetail}>
                         <View>
@@ -52,12 +52,10 @@ const ProfileCard = (props: ProfileDetailProp) => {
                                 <Text style={[typography.body, {color:color.altText}]}>({profile.rating})</Text>
                             </View> 
                         </View>
-                        <View>
-                            <View style={{flexDirection: 'column', justifyContent: 'space-between'}}>
+                        {/* <View style={{flexDirection: 'column', justifyContent: 'space-between'}}>
                             <Text style={[typography.body, {color:color.altText} ]}>{profile.followers} Followers</Text>
                             <Text style={[typography.body, {color:color.altText} ]}>{profile.following} Following</Text>
-                            </View>  
-                        </View> 
+                        </View>   */}
                     </View>
                 </View>
             </View>

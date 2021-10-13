@@ -146,6 +146,7 @@ const ItemDetails = (props: ItemDetailProp) => {
         //         if donor/taker is user, then can tap "Leave Review"
     
             if (itemDetail.itemStatus == "Listed"){
+                //List of Requestors
                 if(itemDetail.donor == user){
                     return <Header
                     SearchBar={false}
@@ -154,27 +155,27 @@ const ItemDetails = (props: ItemDetailProp) => {
                     Icon3={ <MaterialIcons name="edit" size={24} style={{paddingLeft: 8}} onPress={onEdit}/> }
                     Icon4={ <MaterialIcons name="delete-outline" size={24} style={{paddingLeft: 8}} onPress={onDelete}/> }
                     />
-                    //<CommonButton buttonText={"List of Requestors"} primaryText primaryBackground onPress={onListOfRequestors}/>
                 } { 
+                    //Cancel Request
                     if (itemDetail.requestedBy.includes(user)) {
                         return <Header
                         SearchBar={false}
                         Icon1={ <Ionicons name="chevron-back" size={24} style={{marginLeft: 0}} onPress={onBack}/>}
                         Icon2={ <AntDesign name="sharealt" size={24} style={{paddingLeft: 8}} onPress={onShare}/>}
-                        Icon3={ <MaterialIcons name="report" size={24} style={{paddingLeft: 8}} onPress={onReport}/> }
+                        // Icon3={ <MaterialIcons name="report" size={24} style={{paddingLeft: 8}} onPress={onReport}/> }
                         />
-                        // <CommonButton buttonText={"Cancel Request"} primaryText primaryBackground onPress={onCancelRequest}/>
                     } {
+                        // Request
                         return <Header
                         SearchBar={false}
                         Icon1={ <Ionicons name="chevron-back" size={24} style={{marginLeft: 0}} onPress={onBack}/>}
                         Icon2={ <AntDesign name="sharealt" size={24} style={{paddingLeft: 8}} onPress={onShare}/>}
-                        Icon3={ <MaterialIcons name="report" size={24} style={{paddingLeft: 8}} onPress={onReport}/> }
+                        // Icon3={ <MaterialIcons name="report" size={24} style={{paddingLeft: 8}} onPress={onReport}/> }
                         />
-                        // <CommonButton buttonText={"Request"} primaryText primaryBackground onPress={onRequest}/> 
                     }  
                 }
             } else if (itemDetail.itemStatus == "In Process"){
+                // Mark as Unreserved
                 if(itemDetail.donor == user){
                     return <Header
                     SearchBar={false}
@@ -182,29 +183,28 @@ const ItemDetails = (props: ItemDetailProp) => {
                     Icon2={ <Ionicons name="md-analytics" size={24} style={{paddingLeft: 8}} onPress={onAnalyticsReserved}/> }
                     Icon3={ <MaterialIcons name="delete-outline" size={24} style={{paddingLeft: 8}} onPress={onDelete}/> }
                     />
-                    //<CommonButton buttonText={"Mark as Unreserved"} primaryText primaryBackground onPress={onMarkAsUnreserved}/>
                 } else if (itemDetail.taker == user) {
+                    // Item Received
                     return <Header
                     SearchBar={false}
                     Icon1={ <Ionicons name="chevron-back" size={24} style={{marginLeft: 0}} onPress={onBack}/>}
-                    Icon2={ <MaterialIcons name="report" size={24} style={{paddingLeft: 8}} onPress={onReport}/> }
+                    // Icon2={ <MaterialIcons name="report" size={24} style={{paddingLeft: 8}} onPress={onReport}/> }
                     /> 
-                    // <CommonButton buttonText={"Item Received"} primaryText primaryBackground onPress={onItemReceived}/>
                 }     
             } else if (itemDetail.itemStatus == "Completed"){
+                //Leave Review to Taker
                 if(itemDetail.donor == user){
                     return <Header
                     SearchBar={false}
                     Icon1={ <Ionicons name="chevron-back" size={24} style={{marginLeft: 0}} onPress={onBack}/>}
                     Icon2={ <Ionicons name="md-analytics" size={24} style={{paddingLeft: 8}} onPress={onAnalyticsDonated}/>}
                     />
-                    // <CommonButton buttonText={"Leave review"} primaryText primaryBackground/>
                 } else if (itemDetail.taker == user) {
+                    // Leave Review to Donor
                     return <Header
                     SearchBar={false}
                     Icon1={ <Ionicons name="chevron-back" size={24} style={{marginLeft: 0}} onPress={onBack}/>}
                     />
-                    // <CommonButton buttonText={"Leave review"} primaryText primaryBackground onPress={onLeaveReview}/>
                 } return
             } return
         }

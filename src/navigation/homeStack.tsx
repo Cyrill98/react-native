@@ -41,8 +41,8 @@ const HomeStack = () => {
                         headerShown: true,
                         header: () => <Header 
                             SearchBar
-                            Icon3={<AntDesign name="hearto" size={24} style={{paddingLeft: 8}} onPress={onFavourite}/>}
-                            Icon4={<AntDesign name="message1" size={24} style={{paddingLeft: 8}} onPress={onMessage}/>}
+                            // Icon3={<AntDesign name="hearto" size={24} style={{paddingLeft: 8}} onPress={onFavourite}/>}
+                            // Icon4={<AntDesign name="message1" size={24} style={{paddingLeft: 8}} onPress={onMessage}/>}
                             />     
                         }}/>
                 <Stack.Screen 

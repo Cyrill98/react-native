@@ -71,7 +71,7 @@ const ProfileTabs = () => {
             renderScene={renderScene}
             onIndexChange={setIndex}
             renderTabBar={renderTabBar}
-            // initialLayout={{width: layout.width}}
+            // initialLayout={{height: layout.height}}
         />
     )
 }
