@@ -49,7 +49,22 @@ const styles = StyleSheet.create({
         flexDirection: 'row', 
         justifyContent: 'space-between',
         alignItems: "center",
-    }
+        marginVertical: 8,
+    },
+    activeRadio: {
+        backgroundColor: color.primary5,
+        borderRadius: 8,
+        shadowColor: 'black',
+        shadowOffset: {width: 0, height: 2},
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+        width: 160,
+    },
+    inactiveRadio: {
+        backgroundColor: color.backgroundLightSecondary,
+        borderRadius: 8,
+        width: 160,
+    },
 })
 
 export default styles

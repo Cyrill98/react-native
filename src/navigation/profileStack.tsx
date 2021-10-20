@@ -16,6 +16,7 @@ import ReviewToDonorScreen from '../screens/ReviewStack/reviewToDonorScreen';
 import ReviewToTakerScreen from '../screens/ReviewStack/reviewToTakerScreen';
 import ConfirmReviewToDonorScreen from '../screens/ReviewStack/confirmReviewToDonorScreen';
 import ConfirmReviewToTakerScreen from '../screens/ReviewStack/confirmReviewToTakerScreen';
+import RequestorDetailsScreen from '../screens/ProfileStack/requestorDetailScreen';
 
 const ProfileStack = () => {
     const Stack = createStackNavigator<RootStackParamList>();
@@ -64,6 +65,18 @@ const ProfileStack = () => {
                 <Stack.Screen 
                     component={AnalyticsListedScreen} 
                     name='AnalyticsListedScreen'
+                    options={{
+                        headerShown: false,
+                        title:'',
+                        // header: () => 
+                        //     <Header
+                        //     SearchBar={false}
+                        //     Icon1={ <Ionicons name="chevron-back" size={24} style={{marginLeft: 8}} onPress={onBack}/>}
+                        //     />
+                        }}/>
+                <Stack.Screen 
+                    component={RequestorDetailsScreen} 
+                    name='RequestorDetailsScreen'
                     options={{
                         headerShown: false,
                         title:'',

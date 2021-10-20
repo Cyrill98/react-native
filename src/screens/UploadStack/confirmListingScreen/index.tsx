@@ -16,6 +16,7 @@ const ConfirmUploadScreen = () => {
     const navigation = useNavigation<confirmReviewScreenProp>();
     const onExplore = () => {
         navigation.navigate('HomeScreen')
+        navigation.popToTop();
     }
 
     return (

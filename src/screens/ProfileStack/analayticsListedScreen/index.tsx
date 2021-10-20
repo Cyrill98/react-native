@@ -68,9 +68,9 @@ const AnalyticsListedScreen = () => {
           </Text>
           <View style={{height: 310}}>
             <ScrollView showsVerticalScrollIndicator={false}>
-              {items[id].requestedBy.map(item => (
+              {items[id].requestedBy.map((item) => (
                 <ProfileActionCardAlt
-                  requestedBy={item}
+                  requestedBy={item.taker}
                   actionCheck
                   actionClose
                   actionMessage

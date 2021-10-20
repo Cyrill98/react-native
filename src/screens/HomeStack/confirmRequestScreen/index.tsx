@@ -30,6 +30,7 @@ const ConfirmRequestScreen = () => {
                     <Text style={[typography.body, {textAlign: 'center'}]}>Currently, there are: </Text>
                     <Text style={[typography.bold, {textAlign: 'center'}]}>{'\n'} {items[id].requestedBy.length} Requests </Text>
                     <Text style={[typography.body, {textAlign: 'center'}]}>{'\n'}{'\n'}Send the donor a message. Tell them how much you need the item!</Text>
+                    <Text style={[typography.bold, {textAlign: 'center'}]}>{'\n'} Donor Number Here</Text>
                 </View>
                 <View style={styles.buttonContainer}>
                     <CommonButton buttonText='Explore More Items' primaryBackground primaryText onPress={onExplore}/>

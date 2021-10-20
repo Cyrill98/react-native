@@ -45,6 +45,7 @@ const EditProfileScreen = () => {
                             <TextInput 
                             style={styles.input} 
                             placeholder={profile[0].username}
+                            placeholderTextColor={profile[0].username && color.text}
                             value={username}
                             onChangeText={setUsername}
                             /> 
@@ -55,6 +56,7 @@ const EditProfileScreen = () => {
                             <TextInput 
                             style={styles.input} 
                             placeholder={profile[0].name}
+                            placeholderTextColor={profile[0].name && color.text}
                             value={fullname}
                             onChangeText={setFullname}
                             /> 
@@ -65,6 +67,7 @@ const EditProfileScreen = () => {
                             <TextInput 
                             style={styles.input} 
                             placeholder={profile[0].orgNumber}
+                            placeholderTextColor={profile[0].orgNumber !== "optional" ? color.text: color.subtleText}
                             value={orgnumber}
                             onChangeText={setOrgnumber}
                             /> 
@@ -73,8 +76,10 @@ const EditProfileScreen = () => {
                         <View style={styles.inputContainer}>
                             <Text style={typography.subtitle}>Site Link</Text>
                             <TextInput 
+                            editable={false}
                             style={styles.input} 
                             placeholder={`www.sadaqamedia.my/${profile[0].username}`}
+                            placeholderTextColor={color.text}
                             value={sitelink}
                             onChangeText={setSitelink}
                             /> 
@@ -85,6 +90,7 @@ const EditProfileScreen = () => {
                             <TextInput 
                             style={styles.input} 
                             placeholder={profile[0].biodata}
+                            placeholderTextColor={profile[0].biodata && color.text}
                             value={biodata}
                             onChangeText={setBiodata}
                             /> 
@@ -96,6 +102,7 @@ const EditProfileScreen = () => {
                             <TextInput 
                             style={styles.input} 
                             placeholder={profile[0].email}
+                            placeholderTextColor={profile[0].email && color.text}
                             value={email}
                             onChangeText={setEmail}
                             /> 
@@ -106,6 +113,7 @@ const EditProfileScreen = () => {
                             <TextInput 
                             style={styles.input} 
                             placeholder={profile[0].phoneNumber}
+                            placeholderTextColor={profile[0].phoneNumber && color.text}
                             value={phoneNumber}
                             onChangeText={setPhoneNumber}
                             /> 
@@ -121,7 +129,7 @@ const EditProfileScreen = () => {
                             /> 
                         </View>
                         {/* Birthday */}
-                        <View style={styles.inputContainer}>
+                        {/* <View style={styles.inputContainer}>
                             <Text style={typography.subtitle}>Date of Birth</Text>
                             <TextInput 
                             style={styles.input} 
@@ -129,7 +137,7 @@ const EditProfileScreen = () => {
                             value={birthDate}
                             onChangeText={setBirthDate}
                             /> 
-                        </View>
+                        </View> */}
             </ScrollView>   
         </SafeAreaView>
     )

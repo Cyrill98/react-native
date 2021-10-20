@@ -22,7 +22,12 @@ const ReviewToDonorScreen = () => {
         navigation.goBack()
     }
     const onPublish = () => {
+        if(!review || !rating){
+            Alert.alert('Please fill in all the fields')
+            return
+        } else {
         navigation.navigate('ConfirmReviewToDonorScreen')
+        }
     }
     return (
         <KeyboardAvoidingView 

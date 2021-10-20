@@ -11,7 +11,7 @@ const FirstRoute = () => {
     const user = "@lsyakiru"
     const userData = items.filter(x => x.donor.includes(user) || x.taker.includes(user) || x.requestedBy.includes(user))
     return (
-    <View style={{flex: 1}}>
+    <View style={{flex: 1, height: '100%', paddingBottom: 240}}>
          <FlatList
                 data= {userData}
                 renderItem={({item}) => <MainCard item={item}/>}

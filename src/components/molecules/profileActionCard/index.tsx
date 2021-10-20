@@ -23,10 +23,10 @@ interface ItemOverviewProps {
         takerRatingToDonor: number,
         takerReviewToDonor: string,
     },
-    actionCheck: boolean,
-    actionClose: boolean,
-    actionMessage: boolean,
-    actionReview: boolean,
+    actionCheck?: boolean,
+    actionClose?: boolean,
+    actionMessage?: boolean,
+    actionReview?: boolean,
 }
 
 type homeScreenProp = StackNavigationProp<RootStackParamList, 'HomeScreen'>;

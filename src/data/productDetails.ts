@@ -129,7 +129,37 @@ export default [
   deliveryPrice: "West Malaysia",
 
   // requestCount: 23,
-  requestedBy: ["@jmulaney", "@jmalkovich", "@shadowforce", "@shahjali", "@fiziying"],
+  requestedBy: [
+    {
+      requestId: 0,
+      logistic: 'Delivery',
+      taker: "@jmulaney",
+      takerImage: '/Users/ferdmas/Dev/work/SMPortalRN/src/data/image/profile/jmulaney.jpg',
+      fullName: 'John Mulaney',
+      phoneNumber: '0137615346',
+      addressLine1: 'W-10-9, I Residence',
+      addressLine2: 'Persiaran Surian, Kota Damansara',
+      postcode: '47810',
+      city: 'Petaling Jaya',
+      state: 'Selangor'
+    }, 
+    {
+      requestId: 1,
+      logistic: 'Pickup',
+      taker: "@jmalkovich",
+      takerImage: '/Users/ferdmas/Dev/work/SMPortalRN/src/data/image/profile/jmulaney.jpg',
+      fullName: 'John Malkovich',
+      phoneNumber: '0137615346',
+    }, 
+    {
+      taker: "@shadowforce"
+    }, 
+    {
+      taker: "@shahjali"
+    }, 
+    {
+      taker: "@fiziying"}
+  ],
   // favouriteCount: 12,
   favouritedBy: ["User 1", "User 2", "User 3", "User 4"],
   shareCount: 56,

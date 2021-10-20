@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { View, Text, TextInput, ScrollView, Switch } from 'react-native'
+import { View, Text, TextInput, ScrollView, Switch, Alert } from 'react-native'
 import { useNavigation } from '@react-navigation/core'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { ImageOrVideo } from 'react-native-image-crop-picker'
@@ -13,6 +13,7 @@ import Categories from '../../../data/categories'
 import typography from '../../../constants/typography'
 import styles from './styles'
 import color from '../../../constants/color'
+import { RadioButton } from 'react-native-paper'
 
 type uploadScreenProp = StackNavigationProp<RootStackParamList>
 
@@ -22,7 +23,10 @@ const UploadScreen = () => {
     }
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
-    const [quantity, setQuantity] = useState("")
+    const [condition, setCondition] = useState('')
+    const [isConditionChecked, setIsConditionChecked] = useState('')
+    const [quantity, setQuantity] = useState('')
+    const [itemQuantity, setItemQuantity] = useState('')
     const [isPickupEnabled, setIsPickupEnabled] = useState(false)
     const [pickupAddress, setPickupAddress] = useState('')
     const [isDeliveryEnabled, setIsDeliveryEnabled] = useState(false)
@@ -30,11 +34,24 @@ const UploadScreen = () => {
 
     const navigation = useNavigation<uploadScreenProp>();
     const onPublish = () => {
-        navigation.navigate('ConfirmUploadScreen')
+        if(!title || !description || !condition || !quantity || (isPickupEnabled === false && isDeliveryEnabled === false) || (isPickupEnabled === true && !pickupAddress) || (isDeliveryEnabled === true && !deliveryPrice)){
+            Alert.alert('Please fill in all the fields and complete all options category.')
+            return
+        } else
+        navigation.navigate('ConfirmUploadScreen');
+        setTitle("")
+        setDescription("")
+        setCondition("")
+        setQuantity("")
+        setItemQuantity("")
+        setIsPickupEnabled(false)
+        setPickupAddress("")
+        setIsDeliveryEnabled(false)
+        setDeliveryPrice("")
     }
     return (
         <View style={styles.root}>
-            <Text style={[typography.h3, styles.title]}>List Out an Item</Text>
+            <Text style={[typography.h3, styles.title]}>Donate Item</Text>
             <ChooseImage
                 // onChange={onPictureChange}
                 // source={require('./')}
@@ -43,11 +60,11 @@ const UploadScreen = () => {
                 style={styles.detailContainer}
                 showsVerticalScrollIndicator={false}>
                 <View style={styles.inputContainer}>
-                    <Text style={[typography.bold, {marginBottom: 8}]}>Category</Text>
+                    <Text style={[typography.bold, {marginVertical: 8}]}>Category</Text>
                     <DropdownPicker options={Categories} defaultText={"Choose a category"}/>
                 </View>
                 <View style={styles.inputContainer}>
-                    <Text style={typography.bold}>Title</Text>
+                    <Text style={[typography.bold, {marginVertical: 8}]}>Title</Text>
                     <TextInput 
                         style={[styles.inputTitle]} 
                         placeholder={"What would you like to call the item?"}
@@ -56,7 +73,7 @@ const UploadScreen = () => {
                         /> 
                 </View>
                 <View style={styles.inputContainer}>
-                    <Text style={typography.bold}>Description</Text>
+                    <Text style={[typography.bold, {marginVertical: 8}]}>Description</Text>
                     <TextInput 
                         style={styles.inputDescription} 
                         placeholder={"Describe in details what you are giving away..."}
@@ -66,22 +83,36 @@ const UploadScreen = () => {
                         /> 
                 </View>
                 <View style={styles.inputContainer}>
-                    <Text style={[typography.bold, {marginBottom: 8}]}>Condition</Text>
-                    <OptionButton options={['New', 'Used']}/>
+                    <Text style={[typography.bold, {marginVertical: 8}]}>Condition</Text>
+                    <RadioButton.Group onValueChange={condition => setCondition(condition)} value={condition}>
+                        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                            <RadioButton.Item label="New" value="New" 
+                                style={condition === "New" ? styles.activeRadio: styles.inactiveRadio}/>
+                            <RadioButton.Item label="Used" value="Used" 
+                                style={ condition === "Used" ? styles.activeRadio: styles.inactiveRadio}/>
+                        </View>
+                    </RadioButton.Group>
                 </View>
                 <View style={styles.inputContainer}>
-                    <Text style={[typography.bold, {marginBottom: 8}]}>Quantity</Text>
-                    <OptionButton options={['Single', 'Bulk']}/>
-                    {<TextInput 
+                    <Text style={[typography.bold, {marginVertical: 8}]}>Quantity</Text>
+                    <RadioButton.Group onValueChange={quantity => setQuantity(quantity)} value={quantity}>
+                        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                            <RadioButton.Item label="Single" value="Single" 
+                                style={quantity === "Single" ? styles.activeRadio: styles.inactiveRadio}/>
+                            <RadioButton.Item label="Bulk" value="Bulk" 
+                                style={quantity === "Bulk" ? styles.activeRadio: styles.inactiveRadio}/>
+                        </View>
+                        {quantity === "Bulk" && 
+                        <TextInput 
                         style={[styles.inputTitle]} 
-                        placeholder={"If bulk, how many items are in the bulk?"}
-                        value={quantity}
-                        onChangeText={setQuantity}
-                        />
-                    }
+                        placeholder={"How many items are in the bulk?"}
+                        value={itemQuantity}
+                        onChangeText={setItemQuantity}
+                        />}
+                    </RadioButton.Group>
                 </View>
                 <View style={styles.inputContainer}>
-                    <Text style={[typography.bold, {marginBottom: 8}]}>Logistics</Text> 
+                    <Text style={[typography.bold, {marginVertical: 8}]}>Logistics</Text> 
                     <View style={styles.switchContainer}>
                         <Text style={typography.body}>Pickup</Text>
                         <Switch
@@ -113,13 +144,13 @@ const UploadScreen = () => {
                     {isDeliveryEnabled && 
                     <TextInput 
                     style={[styles.inputTitle]} 
-                    placeholder={"Set delivery price"}
+                    placeholder={"Set delivery cost that taker needs to bare."}
                     value={deliveryPrice}
                     onChangeText={setDeliveryPrice}
                     />
                     }
                 </View>
-                <View>
+                <View style={{marginVertical: 16}}>
                     <CommonButton primaryText primaryBackground buttonText="Publish" onPress={onPublish}/>
                 </View>
             </ScrollView>

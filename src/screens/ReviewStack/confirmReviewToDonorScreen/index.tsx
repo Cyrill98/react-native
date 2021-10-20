@@ -17,6 +17,7 @@ const ConfirmReviewToDonorScreen = () => {
 
     const onExplore = () => {
         navigation.navigate('HomeScreen')
+        navigation.popToTop();
     }
 
     return (

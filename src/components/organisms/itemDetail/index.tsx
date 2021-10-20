@@ -80,8 +80,8 @@ const ItemDetails = (props: ItemDetailProp) => {
             } else if (result.action === Share.dismissedAction) {
 
                 }
-            } catch (error) {
-                Alert.alert(error.message)
+            } catch (err) {
+                Alert.alert(err.message)
             };
     }
     const onReport = () => {
@@ -285,13 +285,13 @@ const ItemDetails = (props: ItemDetailProp) => {
                             {/* Donor */}
                             <Text style={typography.extrasmall}>by {itemDetail.donor}</Text>
                         </View>
-                        {!itemDetail.donor.includes(user) && <AntDesign name='hearto' size={24} />}
+                        {/* {!itemDetail.donor.includes(user) && <AntDesign name='hearto' size={24} />} */}
                     </View>
                     {/* Save Count */}
-                    <View style={styles.detail}>
+                    {/* <View style={styles.detail}>
                         <AntDesign name='hearto' size={24} />
                         <Text style={[typography.body, {padding: 8}]}>{itemDetail.favouritedBy.length} saves</Text>   
-                    </View>
+                    </View> */}
                     
                     {/* Request Count */}
                     <View style={styles.detail}>
@@ -418,7 +418,7 @@ const ItemDetails = (props: ItemDetailProp) => {
             button2={ <CommonButton primaryText={false} primaryBackground={false} buttonText="No. Please Cancel." onPress={() => setDeletePopup(false)}/> }
             />
         <PopupModal 
-            modalSubtitle="Are you sure you want to delete this listing? Your requestors will be notified that this is listing is no longer available."
+            modalSubtitle="Are you sure you have received this item?"
             isVisible={itemReceivedPopup}
             button1={ <CommonButton primaryText primaryBackground buttonText="Yes. I am sure." onPress={onConfirmItemReceived}/> }
             button2={ <CommonButton primaryText={false} primaryBackground={false} buttonText="No. Please Cancel." onPress={() => setItemReceivedPopup(false)}/> }

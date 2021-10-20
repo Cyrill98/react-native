@@ -26,13 +26,17 @@ const styles = StyleSheet.create({
         marginTop: 8,
     },
     input: {
-        backgroundColor: color.backgroundLight,
+        backgroundColor: color.backgroundLightSecondary,
         height: 48,
         marginVertical: 8,
         padding: 8,
-        borderWidth: 1,
+        // borderWidth: 1,
         borderRadius: 4,
-        borderColor: color.text,
+        borderColor: color.primary5,
+        shadowColor: 'black',
+        shadowOffset: {width: 0, height: 2},
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
     },
 })
 

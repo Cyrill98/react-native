@@ -12,7 +12,7 @@ const FAQAccordion = () => {
     //     activeSections: [],
     // }
 
-    const renderHeader = (section) => {
+    const renderHeader = (section: { title: string }) => {
         return (
             <View style={styles.headerContainer}>
                 <Text style={typography.subtitle}>{section.title}</Text>
@@ -20,7 +20,7 @@ const FAQAccordion = () => {
         );
     }
 
-    const renderContent = (section) => {
+    const renderContent = (section: { title: string ,content: string}) => {
         return (
             <View style={styles.contentContainer}>
                 <Text style={typography.body}>{section.content}</Text>
@@ -28,7 +28,7 @@ const FAQAccordion = () => {
         );
     }
 
-    const [activeSections, setactiveSections] = useState([0])
+    const [activeSections, setactiveSections] = useState([100]) 
     return (
         <Accordion
             sections={Questions}

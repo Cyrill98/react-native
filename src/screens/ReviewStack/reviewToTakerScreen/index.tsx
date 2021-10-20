@@ -23,7 +23,12 @@ const ReviewToTakerScreen = () => {
         navigation.goBack()
     }
     const onPublish = () => {
+        if(!review || !rating){
+            Alert.alert('Please fill in all the fields.')
+            return
+        } else {
         navigation.navigate('ConfirmReviewToTakerScreen')
+        }
     }
     return (
         <KeyboardAvoidingView 

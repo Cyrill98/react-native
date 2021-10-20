@@ -27,6 +27,7 @@ export type RootStackParamList = {
     TNCScreen: undefined;
     PrivacyPolicyScreen: undefined;
     AnalyticsListedScreen: {id: string};
+    RequestorDetailsScreen: undefined;
     AnalyticsReservedScreen: {id: string};
     AnalyticsDonatedScreen: {id: string};
     EditItemDetailsScreen: {id: string};

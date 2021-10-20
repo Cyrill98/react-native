@@ -99,9 +99,9 @@ const SettingScreen = () => {
                     <Pressable style={styles.link} onPress={onEditProfile}>
                         <Text style={typography.body}>My Profile</Text>
                     </Pressable> 
-                    <Pressable style={styles.link} onPress={onEditAddress}>
+                    {/* <Pressable style={styles.link} onPress={onEditAddress}>
                         <Text style={typography.body}>My Addresses</Text>
-                    </Pressable> 
+                    </Pressable>  */}
                     <Pressable style={styles.link} onPress={onChangePassword}>
                         <Text style={typography.body}>Change Password</Text>
                     </Pressable> 
@@ -109,7 +109,7 @@ const SettingScreen = () => {
                         <Text style={typography.body}>Verification</Text>
                     </Pressable>  */}
                 </View>
-                <View style={styles.subContainer} >
+                {/* <View style={styles.subContainer} >
                     <Text style={typography.subtitle}>Settings</Text>
                     <Pressable style={styles.link} onPress={onEditNotification}>
                         <Text style={typography.body}>Notification Settings</Text>
@@ -117,7 +117,7 @@ const SettingScreen = () => {
                     <Pressable style={styles.link} onPress={onEditPrivacy}>
                         <Text style={typography.body}>Privacy Settings</Text>
                     </Pressable> 
-                </View>
+                </View> */}
                 <View style={styles.subContainer}>
                     <Text style={typography.subtitle}>Support</Text>
                     {/* <Pressable style={styles.link} onPress={onHelpCentre}>

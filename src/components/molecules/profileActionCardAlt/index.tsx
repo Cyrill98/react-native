@@ -36,8 +36,11 @@ const ProfileActionCardAlt = (props: ItemOverviewProps) => {
     };
     const onConfirmReject = () => {
     };
+    const onRequestorDetail = () => {
+        navigation.navigate('RequestorDetailsScreen')
+    };
     return (
-        <Pressable style={styles.root}>
+        <Pressable style={styles.root} onPress={onRequestorDetail}>
             <View style={styles.summaryContainer}>
                 <View style={styles.profileContainer}>
                     <View style={styles.detailContainer}>
